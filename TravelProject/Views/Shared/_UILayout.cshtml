@@ -1,7 +1,6 @@
-﻿<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
+﻿@{
+    Layout = null;
+}
 <!doctype html>
 <html lang="zxx">
 
@@ -9,7 +8,7 @@ Author URL: http://w3layouts.com
 
 <body>
     @await Html.PartialAsync("~/Views/LayoutPartial/NavbarPartial.cshtml")
-    
+
     @RenderBody()
 
     @await Html.PartialAsync("~/Views/LayoutPartial/FooterPartial.cshtml")
@@ -18,3 +17,6 @@ Author URL: http://w3layouts.com
 </body>
 
 </html>
+
+
+

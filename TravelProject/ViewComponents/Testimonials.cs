@@ -13,7 +13,7 @@ namespace TravelProject.ViewComponents
 		}
 		public IViewComponentResult Invoke()
 		{
-			return View();
+			return View(_testimonialService.GetAll());
 		}
 	}
 }

@@ -19,5 +19,8 @@ namespace EntityLayer.Concrete
 		public string DestinationDescription { get; set; } // Destination -> Tanımlama
 		public int DestinationCapacity { get; set; } // Capacity -> Kapasite, max yolcu sayısı
 		public bool DestinationStatus { get; set; }
+		public string DestinationDetailDescription1 { get; set; } // Gidilecek yerin ayrıntı bölümündeki açıklama 1
+		public string DestinationDetailDescription2 { get; set; } // Gidilecek yerin ayrıntı bölümündeki açıklama 2
+		public string DestinationDetailImage { get; set; } // Gidilecek yerin ayrıntı bölümündeki resim 
 	}
 }
