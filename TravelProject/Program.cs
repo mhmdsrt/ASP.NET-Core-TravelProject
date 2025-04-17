@@ -38,6 +38,8 @@ builder.Services.AddScoped<IGuideService, GuideService>();
 builder.Services.AddScoped<INewsletterService, NewsletterService>();
 builder.Services.AddScoped<ISubAboutService, SubAboutService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+
 
 
 builder.Services.AddScoped<IAboutRepository, AboutRepository>();
@@ -50,6 +52,7 @@ builder.Services.AddScoped<IGuideRepository, GuideRepository>();
 builder.Services.AddScoped<INewsletterRepository, NewsletterRepository>();
 builder.Services.AddScoped<ISubAboutRepository, SubAboutRepository>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
