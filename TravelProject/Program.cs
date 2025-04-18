@@ -3,17 +3,44 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 
 var builder = WebApplication.CreateBuilder(args);
 
 /*
+ Identity sistemini eklerken kullanýcý tipi olarak "AppUser", rol tipi olarak da "AppRole" kullanacaðým ve kullanýcý/rol bilgilerini
+ "Context" üzerinde saklayacaðým anlamýna geliyor. Yani EF kullanarak bu bilgileri Context sýnýfý ile veritabanýna yaz.
+
+ Aþaðýdaki yapý Identity sisteminde kullanýlacak tüm servislerin (UserManager<AppUser>, RoleManager<AppRole>, SignInManager<AppUser> vb.) Contructor'ýna 
+ AppUser'ý ve AppRole'u yönetek servisleri yani "UserManager<AppUser>" gibi servisleri enjekte eder.(Dependecy Injection)
+ */
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+
+// Authorization -> Yetkikendirme, Policy -> Politika ,Authenticated -> Kimliði Doðrulanmýþ, Require -> Gerekli Kýlmak
+//  Politika -> türkçede kurallar koymak ve uygulamak için yapýlan faaliyetler demektir.
+builder.Services.AddMvc(config =>
+{
+	var policy = new AuthorizationPolicyBuilder() // AuthorizationPolicyBuilder -> Yetkilendirme Politika Oluþturucusu
+	.RequireAuthenticatedUser() // RequireAuthenticatedUser->Kimliði Doðrulanmýþ Kullýcýyý Gerekli Kýl
+	.Build(); // Build -> Oluþtur.
+
+	config.Filters.Add(new AuthorizeFilter(policy));
+
+	// Authorize -> Yetki vermek.
+	// Bu yapý sayesinden tüm MVC hizmetlerine Yetkilendiriþmiþ kiþi tarafýndan giriþ yapmayý zorunlu kýlýyoruz.(Proje Seviyesinde)
+	// Yani gidip tek tek [Authorize] yazmamýza gerek kalmýyor. Projenin geneline [Authorize] uyguluyor.
+});
+
+
+/*
   "builder.Services.AddDbContext<Context>" ifadesi Context nesnesini DI(Dependecy Injection) Sistemine kaydeder.
    Böylece, Context nesnesi tüm repository sýnýflarýnda tek bir örnek (instance) üzerinden çalýþýr.
    Context sýnýfý tipinde nesneye ihtiyaç duyulan heryerde enjeckte edilir. 
  */
-
 builder.Services.AddDbContext<Context>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // appsettings.json dosyasýndaki "DefaultConnection" baðlantý dizesini alýyoruz.
 /*
