@@ -15,10 +15,20 @@ namespace TravelProject.Controllers
 		{
 			_userManager = userManager;
 		}
+
+		[HttpGet]
+		public IActionResult SignUp()
+		{
+			return View();
+		}
+
+		[HttpPost]
 		public async Task<IActionResult> SignUp(UserRegisterViewModel userRegisterViewModel) // SignUp -> Uye Ol 
 		{
 			AppUser appUser = new AppUser()
 			{
+				// Şifre bu kod bloğunda verilmez çünkü şifre Identity tarafından Hash’lenerek güvenli şekilde saklanır.
+
 				Name = userRegisterViewModel.Name,
 				SurName = userRegisterViewModel.SurName,
 				Email = userRegisterViewModel.UserMail,
@@ -27,9 +37,12 @@ namespace TravelProject.Controllers
 			/*
 			  Şifre arka tarafda Hash'lendiği için böyle bir yapı kullandık.
 			 */
-			if (userRegisterViewModel.Password == userRegisterViewModel.PasswordConfirm)
+			if (userRegisterViewModel.Password == userRegisterViewModel.PasswordConfirm && userRegisterViewModel.Password != null)
 			{
 				var result = await _userManager.CreateAsync(appUser, userRegisterViewModel.Password);
+				/*
+				 await _userManager.CreateAsync(appUser, userRegisterViewModel.Password) -> kullanıcıyı parolarısını hash'leyerek database'e kaydeder
+				 */
 
 				if (result.Succeeded)
 				{
@@ -40,11 +53,18 @@ namespace TravelProject.Controllers
 				{
 					foreach (var item in result.Errors)
 					{
+						/*
+						 Identity sistemindeki hata mesajlarını view tarafında görüntüyelebilmek hata mesajlarını için ModelState'e ekliyoruz
+						 */
 						ModelState.AddModelError("", item.Description);
 					}
 				}
 			}
 			return View(userRegisterViewModel);
+			/*
+			  Kayıt başarısızsa veya form geçersizse, aynı sayfa tekrar gösterilir.
+              Kullanıcının girdiği veriler kaybolmasın diye userRegisterViewModel geri gönderilir.
+			 */
 		}
 
 		public IActionResult SignIn() // SignIn -> Oturum Ac

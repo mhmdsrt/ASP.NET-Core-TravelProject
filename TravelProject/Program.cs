@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
+using TravelProject.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 
  Aþaðýdaki yapý Identity sisteminde kullanýlacak tüm servislerin (UserManager<AppUser>, RoleManager<AppRole>, SignInManager<AppUser> vb.) Contructor'ýna 
  AppUser'ý ve AppRole'u yönetek servisleri yani "UserManager<AppUser>" gibi servisleri enjekte eder.(Dependecy Injection)
+
+"AddErrorDescriber<CustomIdentityValidator>()" ile Identity sistemine bizim özel tanýmladýðýmýz "CustomIdentityValidator" classýný
+kullanmasýný söyler
  */
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>()
+	.AddEntityFrameworkStores<Context>()
+	.AddErrorDescriber<CustomIdentityValidator>();
+	
+	
 
 // Authorization -> Yetkikendirme, Policy -> Politika ,Authenticated -> Kimliði Doðrulanmýþ, Require -> Gerekli Kýlmak
 //  Politika -> türkçede kurallar koymak ve uygulamak için yapýlan faaliyetler demektir.
