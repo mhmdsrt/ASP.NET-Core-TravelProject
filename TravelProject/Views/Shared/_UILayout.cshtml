@@ -4,16 +4,16 @@
 <!doctype html>
 <html lang="zxx">
 
-@await Html.PartialAsync("~/Views/LayoutPartial/HeaderPartial.cshtml")
+@await Html.PartialAsync("~/Views/UILayoutPartial/HeaderPartial.cshtml")
 
 <body>
-    @await Html.PartialAsync("~/Views/LayoutPartial/NavbarPartial.cshtml")
+    @await Html.PartialAsync("~/Views/UILayoutPartial/NavbarPartial.cshtml")
 
     @RenderBody()
 
-    @await Html.PartialAsync("~/Views/LayoutPartial/FooterPartial.cshtml")
+    @await Html.PartialAsync("~/Views/UILayoutPartial/FooterPartial.cshtml")
 
-    @await Html.PartialAsync("~/Views/LayoutPartial/ScriptsPartial.cshtml")
+    @await Html.PartialAsync("~/Views/UILayoutPartial/ScriptsPartial.cshtml")
 </body>
 
 </html>

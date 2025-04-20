@@ -15,9 +15,9 @@ namespace EntityLayer.Concrete
 	 */
 	public class AppUser : IdentityUser<int> // Identity Framework'ünün bize verdiği tablolara ekstra sütun ekleyebilmek için kullanacağımız AppUser Classı 
 	{
-		public string ImageUrl { get; set; }
+		public string? ImageUrl { get; set; }
 		public string Name { get; set; }
 		public string SurName { get; set; }
-		public string Gender { get; set; }
+		public string? Gender { get; set; }
 	}
 }
