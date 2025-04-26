@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "WaitApprovalReservation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Onay Bekleyen Rezervasyonlarım</h1>
+@*
+ Any -> Herhangibir, hiçbir
+Any() metodu koleksiyonda hiç öğe olup olmadığını kontrol eder
+Koleksiyon boşsa true döner (null olması gerekmez)
+*@
+@if (!Model.Any())
+{
+    <h2 style="color:brown">Onay Bekleyen Rezervasyonunuz Bulunamadı</h2>
+}
+
+else if (Model.Any())
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Lokasyon</th>
+            <th>Kişi Sayısı</th>
+            <th>Tarih</th>
+            <th>Durum</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Destination.DestinationCity</td>
+                <td>@item.ReservationVisitorCount</td>
+                <td>@item.ReservationDate</td>
+                <td>@item.ReservationStatus</td>
+            </tr>
+        }
+
+    </table>
+}
+

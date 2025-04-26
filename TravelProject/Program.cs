@@ -75,6 +75,7 @@ builder.Services.AddScoped<INewsletterService, NewsletterService>();
 builder.Services.AddScoped<ISubAboutService, SubAboutService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 
 
 
@@ -89,6 +90,7 @@ builder.Services.AddScoped<INewsletterRepository, NewsletterRepository>();
 builder.Services.AddScoped<ISubAboutRepository, SubAboutRepository>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

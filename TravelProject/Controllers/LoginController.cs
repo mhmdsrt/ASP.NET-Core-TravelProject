@@ -91,7 +91,7 @@ namespace TravelProject.Controllers
 				var result = await _signInManager.PasswordSignInAsync(userSignInViewModel.UserName, userSignInViewModel.Password, false, true);
 				if (result.Succeeded) // Success -> Başarılı olmak, başarılı
 				{
-					return RedirectToAction("Index", "Destination");
+					return RedirectToAction("Index", "Profile", new { area = "Member" });
 				}
 				else
 				{
