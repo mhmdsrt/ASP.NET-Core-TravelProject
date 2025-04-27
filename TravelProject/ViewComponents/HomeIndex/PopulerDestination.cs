@@ -1,7 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TravelProject.ViewComponents
+namespace TravelProject.ViewComponents.HomeIndex
 {
 	public class PopulerDestination : ViewComponent
 	{

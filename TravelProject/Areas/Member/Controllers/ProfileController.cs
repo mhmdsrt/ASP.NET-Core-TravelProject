@@ -92,5 +92,14 @@ namespace TravelProject.Areas.Member.Controllers
 
 
 		 */
+
+		public async Task<IActionResult> Dashboard()
+		{
+			var userName = await _userManager.FindByNameAsync(User.Identity.Name); // AspNetUsers tablosundaki UserName sütununa karşılık gelir
+			ViewBag.UserName = userName;
+			ViewBag.UserImageUrl = userName.ImageUrl;
+			ViewBag.NameAndSurName = userName.Name + " " + userName.SurName;
+			return View();
+		}
 	}
 }

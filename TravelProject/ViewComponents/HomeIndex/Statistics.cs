@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TravelProject.ViewComponents
+namespace TravelProject.ViewComponents.HomeIndex
 {
-	public class SliderPartial : ViewComponent
+	public class Statistics:ViewComponent
 	{
 		public IViewComponentResult Invoke()
 		{
