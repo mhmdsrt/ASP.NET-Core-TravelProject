@@ -1,0 +1,47 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Tur Ekleme</h2>
+
+<form method="post">
+    <div class="form-group">
+        @Html.Label("Şehir")
+        <input type="text" asp-for="DestinationCity" class="form-control"/>
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Gün - Gece")
+        <input type="text" asp-for="DestinationAccomodationDay" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Kapasite")
+        <input type="text" asp-for="DestinationCapacity" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Fiyatlandırma")
+        <input type="text" asp-for="DestinationPrice" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Ana Görsel")
+        <input type="text" asp-for="DestinationImage" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Detay Alanı için Görsel")
+        <input type="text" asp-for="DestinationDetailImage" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Açıklama")
+        <textarea cols="30" rows="5" asp-for="DestinationDescription" class="form-control" > </textarea>
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Detay için Açıklama 1")
+        <textarea cols="30" rows="5" asp-for="DestinationDetailDescription1" class="form-control" > </textarea>
+    </div><br />
+    <div class="form-group">
+        @Html.Label("Detay için Açıklama 2")
+        <textarea cols="30" rows="5" asp-for="DestinationDetailDescription2" class="form-control"   > </textarea>
+    </div><br />
+    <button class="btn btn-outline-success">Yeni Tur Oluştur</button>
+</form>

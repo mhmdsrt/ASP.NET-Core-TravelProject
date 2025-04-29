@@ -36,7 +36,8 @@ namespace DataAccessLayer.Repository
 
 		public void Delete(int id)
 		{
-			_context.Remove(id);
+			var entity = _context.Set<T>().Find(id);
+			_context.Remove(entity);
 			_context.SaveChanges();
 		}
 

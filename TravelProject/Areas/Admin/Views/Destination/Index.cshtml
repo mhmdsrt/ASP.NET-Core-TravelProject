@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sitede Gör</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.DestinationID</td>
+            <td>@item.DestinationCity</td>
+            <td>@item.DestinationPrice</td>
+            <td>@item.DestinationCapacity</td>
+            <td><a href="#" class="btn btn-outline-info">Sitede Gör</a></td>
+            <td><a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<br />
+<a href="/Admin/Destination/AddDestination" class="btn btn-outline-primary"> Yeni Tur Rotası Oluştur</a>
