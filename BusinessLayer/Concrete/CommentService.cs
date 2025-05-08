@@ -22,5 +22,10 @@ namespace BusinessLayer.Concrete
 			return _commentRepository.GetAllCommentByDestinationId(id);
 		}
 
+		public IEnumerable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
+		{
+			return _commentRepository.GetAllCommentIncludeDestination();
+		}
+
 	}
 }

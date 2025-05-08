@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Sitedeki Yorumlar</h1>
+
+<table class="table table-bordered">
+    <tr>    
+
+        <th>Yorumu Yapan</th>
+        <th>Tur</th>
+        <th> Yorum Tarih</th>
+        <th>Yorum İçeriği</th>
+        <th>Durum</th>
+        <th>Sil</th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CommentUser</td>
+            <td>@item.Destination.DestinationCity</td>
+            <td>@item.CommentDate.ToShortDateString()</td>
+            <td>@item.CommentContent</td>
+            <td>@item.CommentStatus</td>
+            <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>

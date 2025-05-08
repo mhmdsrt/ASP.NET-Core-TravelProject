@@ -76,6 +76,7 @@ builder.Services.AddScoped<ISubAboutService, SubAboutService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IAppUserService, AppUserService>();
 
 
 
@@ -91,6 +92,7 @@ builder.Services.AddScoped<ISubAboutRepository, SubAboutRepository>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -105,6 +107,18 @@ if (!app.Environment.IsDevelopment())
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
+
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error", "?code={0}"); // ErrorPage
+/*
+  Bir hata oluþtuðu zaman ErrorPage Controller altýndaki Error Action'u çalýþtýracak.
+  Ayrýca oluþan hatanýn kodu "0" yazan yere yazýlacak. Böylece ErrorPage controller içerisindeki
+  Error(int code) ile actionuna hangi durumla ilgili hata oluþtuysa Error(int code) içidenki "code"
+  deðerine o hata kodu yazýlýr.
+
+ Yani hangi durumla ile ilgili hata kodu oluþursa ErrorPage Controller'ýn altýndaki Error metoduna o hata kodunu
+ Error metoduna parametre olarak gönderilir.
+ 
+ */
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

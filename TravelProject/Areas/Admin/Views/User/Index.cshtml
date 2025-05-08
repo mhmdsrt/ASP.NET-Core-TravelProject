@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Sisteme Kayıtlı Kullanıcılar</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ad Soyad</th>
+        <th>Kullanıcı Adı</th>
+        <th>Mail</th>
+        <th>Telefon</th>
+        <th>Yaptığı Yorumlar</th>
+        <th>Yaptığı Rezervasyonlar</th>
+        <th>Sil</th>
+   </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name @item.SurName</td>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td><a href="#" class="btn btn-primary">Yaptığı Yorumlar</a></td>
+            <td><a href="/Admin/User/GetUserReservationByOld/@item.Id" class="btn btn-warning">Yaptığı Rezervasyonlar</a></td>
+            <td><a href="#" class="btn btn-danger">Sil</a></td>
+ 
+        </tr>
+    }
+</table>

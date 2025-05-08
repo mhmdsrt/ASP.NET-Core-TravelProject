@@ -14,7 +14,7 @@ namespace DataAccessLayer.Repository
 		private readonly Context _context;
 		public TestimonialRepository(Context context) : base(context)
 		{
-
+			_context = context;
 		}
 	}
 }

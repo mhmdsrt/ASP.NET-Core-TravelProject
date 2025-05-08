@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
 	public interface IDestinationService : IGenericService<Destination>
 	{
+		public int GetCountDestination(); // Tur sayısını getir
 	}
 }

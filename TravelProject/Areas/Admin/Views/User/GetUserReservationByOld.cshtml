@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Reservation>
+@{
+    ViewData["Title"] = "GetUserReservationByOld";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kullanıcının Geçmiş Rezervasyonları</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Misafir</th>
+        <th>Tur Yeri</th>
+        <th>Konaklama Süresi</th>
+        <th>Konaklama Ücreti</th>
+        <th>Rezervasyon Tarihi</th>
+        <th>Rezervasyon Açıklaması</th>
+        <th>Misafir Sayısı</th>
+        <th>Rezervasyon Durumu</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.AppUser.Name @item.AppUser.SurName</td>
+            <td>@item.Destination.DestinationCity</td>
+            <td>@item.Destination.DestinationAccomodationDay</td>
+            <td>@item.Destination.DestinationPrice</td>
+            <td>@item.ReservationDate.ToLongDateString()</td>
+            <td>@item.ReservationDescription</td>
+            <td>@item.ReservationVisitorCount</td>
+            <td>@item.ReservationStatus</td>
+        </tr>
+    }
+
+</table>
+

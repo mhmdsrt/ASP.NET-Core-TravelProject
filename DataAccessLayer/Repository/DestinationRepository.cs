@@ -14,7 +14,13 @@ namespace DataAccessLayer.Repository
 		private readonly Context _context;
 		public DestinationRepository(Context context) : base(context)
 		{
-
+			_context = context;
 		}
+
+		public int GetCountDestination() // Tur sayısını getir
+		{
+			return _context.Destinations.Count();
+		}
+
 	}
 }

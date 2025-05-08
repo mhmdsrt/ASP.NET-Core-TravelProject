@@ -59,15 +59,19 @@ namespace TravelProject.Areas.Member.Controllers
 				user.ImageUrl = imageName;
 			}
 
-			user.Name = userProfileEditViewModel.Name;
-			user.SurName = userProfileEditViewModel.SurName;
-			user.PhoneNumber = userProfileEditViewModel.PhoneNumber;
-			user.Email = userProfileEditViewModel.Mail;
-			user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userProfileEditViewModel.Password);
+			if (userProfileEditViewModel.Password != null && userProfileEditViewModel.ConfirmPassword != null)
+			{
+				user.Name = userProfileEditViewModel.Name;
+				user.SurName = userProfileEditViewModel.SurName;
+				user.PhoneNumber = userProfileEditViewModel.PhoneNumber;
+				user.Email = userProfileEditViewModel.Mail;
+				user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userProfileEditViewModel.Password);
+
+			}
 			var result = await _userManager.UpdateAsync(user);
 			if (result.Succeeded)
 			{
-				return RedirectToAction("SignIn", "Login");
+				return RedirectToAction("Dashboard", "Profile");
 			}
 
 			return View();

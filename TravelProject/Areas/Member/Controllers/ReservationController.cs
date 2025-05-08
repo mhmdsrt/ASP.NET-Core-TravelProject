@@ -60,7 +60,7 @@ namespace TravelProject.Areas.Member.Controllers
 			reservation.AppUserID = userName.Id;
 			reservation.ReservationStatus = "Onay Bekliyor"; // Kullanıcı rezervasyon yaptıktan sonra Adminin onay vermesini beklicek, kontenjanı dolmus veya tur iptal edilmiş olabilir
 			_reservationService.Insert(reservation);
-			return RedirectToAction("ActiveReservation", "Reservation");
+			return RedirectToAction("WaitApprovalReservation", "Reservation");
 		}
 	}
 }

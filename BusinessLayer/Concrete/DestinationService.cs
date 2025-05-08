@@ -17,5 +17,10 @@ namespace BusinessLayer.Concrete
 		{
 			_destinationRepository = destinationRepository;
 		}
+
+		public int GetCountDestination() // Tur sayısını getir
+		{
+			return _destinationRepository.GetCountDestination();
+		}
 	}
 }

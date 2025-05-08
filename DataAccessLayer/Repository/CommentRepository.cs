@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,11 @@ namespace DataAccessLayer.Repository
 		{
 			return _context.Comments.Where(i => i.DestinationID == id);
 		}
+		public IEnumerable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
+		{
+			return _context.Comments.Include(d => d.Destination);
+		}
+
 
 	}
 

@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
 	public interface ICommentService : IGenericService<Comment>
 	{
 		IEnumerable<Comment> GetAllCommentByDestinationId(int id);
+		IEnumerable<Comment> GetAllCommentIncludeDestination(); // Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 
 	}
 }

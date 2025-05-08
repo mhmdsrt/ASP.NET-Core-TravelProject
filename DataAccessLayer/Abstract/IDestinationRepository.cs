@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IDestinationRepository : IGenericRepository<Destination>
 	{
+		int GetCountDestination(); // Tur sayısını getir
 	}
 }
