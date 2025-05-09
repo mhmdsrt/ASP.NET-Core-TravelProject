@@ -19,5 +19,17 @@ namespace TravelProject.Areas.Admin.Controllers
 		{
 			return View(_guideService.GetAll());
 		}
+
+		public IActionResult ChangeToFalse(int id)
+		{
+			_guideService.ChangeToFalse(id);
+			return RedirectToAction("Index", "Guide");
+		}
+
+		public IActionResult ChangeToTrue(int id)
+		{
+			_guideService.ChangeToTrue(id);
+			return RedirectToAction("Index", "Guide");
+		}
 	}
 }

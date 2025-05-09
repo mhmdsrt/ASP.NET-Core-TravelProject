@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,12 @@ namespace TravelProject.Areas.Admin.Controllers
 	public class DestinationController : Controller
 	{
 		private readonly IDestinationService _destinationService;
+		private readonly IValidator<Destination> _validator;
 
-		public DestinationController(IDestinationService destinationService)
+		public DestinationController(IDestinationService destinationService, IValidator<Destination> validator)
 		{
 			_destinationService = destinationService;
+			_validator = validator;
 		}
 		public IActionResult Index()
 		{
@@ -31,8 +34,19 @@ namespace TravelProject.Areas.Admin.Controllers
 		public IActionResult AddDestination(Destination destination)
 		{
 			destination.DestinationStatus = true;
+			var result = _validator.Validate(destination);
+
+			if (!result.IsValid)
+			{
+				foreach (var item in result.Errors)
+				{
+					ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+				}
+
+				return View(destination);
+			}
 			_destinationService.Insert(destination);
-			return RedirectToAction("Index");
+			return RedirectToAction("Index","Destination");
 		}
 
 		public IActionResult DeleteDestination(int id)

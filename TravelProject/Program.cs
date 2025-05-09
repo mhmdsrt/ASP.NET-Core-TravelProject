@@ -4,12 +4,15 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 using TravelProject.Models;
+using TravelProject.ValidationRules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +32,8 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 	
 	
 
+
+
 // Authorization -> Yetkikendirme, Policy -> Politika ,Authenticated -> Kimliði Doðrulanmýþ, Require -> Gerekli Kýlmak
 //  Politika -> türkçede kurallar koymak ve uygulamak için yapýlan faaliyetler demektir.
 builder.Services.AddMvc(config =>
@@ -43,6 +48,25 @@ builder.Services.AddMvc(config =>
 	// Bu yapý sayesinden tüm MVC hizmetlerine Yetkilendiriþmiþ kiþi tarafýndan giriþ yapmayý zorunlu kýlýyoruz.(Proje Seviyesinde)
 	// Yani gidip tek tek [Authorize] yazmamýza gerek kalmýyor. Projenin geneline [Authorize] uyguluyor.
 });
+
+
+
+
+// Bu satýr DI'ya tüm validatorlarý tek kod satýrý ile ekler:
+builder.Services.AddValidatorsFromAssemblyContaining<DestinationValidator>(); // Controller tarafýnda new'lemekten kurtulup DI ile enjekte ediyoruz
+/*
+  "DestinationValidator hangi assembly'deyse, o assembly'deki tüm AbstractValidator<T> sýnýflarýný tara ve IValidator<T> olarak 
+   DI sistemine ekle."
+Yani yukarýdaki tek satýrlýk kod sayesinde aþaðýdaki gibi tek tek yazmamýza gerek kalmadý tüm Validator sýnýflarýmýzý bulup otomatik DI yapýcak
+"builder.Services.AddScoped<IValidator<Category>, CategoryValidator>();"
+"builder.Services.AddScoped<IValidator<Reservation>, ReservationValidator>();" 
+
+yani diðer tüm contoller içerisindeki Constructor metodunda farklý tipteki IValidayor<Category> gibi 
+doðrulayýcý istendiðinde bu tek satýrlýk kod sayesinde otomatik olarak DI yapýlacak
+ */
+
+
+
 
 
 /*

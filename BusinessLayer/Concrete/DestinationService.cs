@@ -22,5 +22,6 @@ namespace BusinessLayer.Concrete
 		{
 			return _destinationRepository.GetCountDestination();
 		}
+
 	}
 }

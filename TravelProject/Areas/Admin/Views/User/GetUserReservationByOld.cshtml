@@ -24,7 +24,7 @@
             <td>@item.Destination.DestinationCity</td>
             <td>@item.Destination.DestinationAccomodationDay</td>
             <td>@item.Destination.DestinationPrice</td>
-            <td>@item.ReservationDate.ToLongDateString()</td>
+            <td>@item.ReservationDate?.ToLongDateString()</td> @*item.ReservationDate null değilse, ToLongDateString() çağırır *@
             <td>@item.ReservationDescription</td>
             <td>@item.ReservationVisitorCount</td>
             <td>@item.ReservationStatus</td>

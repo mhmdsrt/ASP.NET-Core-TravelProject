@@ -12,8 +12,8 @@ namespace EntityLayer.Concrete
 	{
 		[Key]
 		public int DestinationID { get; set; }
-		public string DestinationCity { get; set; } // Gidilecek yerin şehri
-		public string DestinationAccomodationDay { get; set; } // Accomodation -> konaklama , gidilecek yerin konaklama gün sayısı
+		public string? DestinationCity { get; set; } // Gidilecek yerin şehri
+		public string? DestinationAccomodationDay { get; set; } // Accomodation -> konaklama , gidilecek yerin konaklama gün sayısı
 		public double DestinationPrice { get; set; } // Gidilecek yerin ücreti
 		public string DestinationImage { get; set; }
 		public string DestinationDescription { get; set; } // Destination -> Tanımlama

@@ -16,5 +16,16 @@ namespace BusinessLayer.Concrete
 		{
 			_guideRepository = guideRepository;
 		}
+
+		public void ChangeToFalse(int id)
+		{
+			_guideRepository.ChangeToFalse(id);
+		}
+
+		public void ChangeToTrue(int id)
+		{
+			_guideRepository.ChangeToTrue(id);
+		}
+
 	}
 }

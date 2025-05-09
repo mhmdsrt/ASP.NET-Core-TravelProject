@@ -6,14 +6,20 @@
 
 <h2>Tur Ekleme</h2>
 
-<form method="post">
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-area="Admin" asp-controller="Destination" asp-action="AddDestination" method="post">
     <div class="form-group">
         @Html.Label("Şehir")
         <input type="text" asp-for="DestinationCity" class="form-control"/>
+        <span asp-validation-for="DestinationCity" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Gün - Gece")
         <input type="text" asp-for="DestinationAccomodationDay" class="form-control" />
+        <span asp-validation-for="DestinationAccomodationDay" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Kapasite")

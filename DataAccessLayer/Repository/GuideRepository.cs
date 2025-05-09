@@ -16,5 +16,23 @@ namespace DataAccessLayer.Repository
 		{
 			_context = context;
 		}
+
+		public void ChangeToFalse(int id)
+		{
+			var entityGuide = _context.Guides.Find(id);
+			entityGuide.GuideStatus = false;
+			_context.Update(entityGuide);
+			_context.SaveChanges();
+		}
+
+		public void ChangeToTrue(int id)
+		{
+			var entityGuide = _context.Guides.Find(id);
+			entityGuide.GuideStatus = true;
+			_context.Update(entityGuide);
+			_context.SaveChanges();
+
+		}
+
 	}
 }

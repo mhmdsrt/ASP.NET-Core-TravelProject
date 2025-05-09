@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IGuideRepository : IGenericRepository<Guide>
 	{
+		void ChangeToFalse(int id);
+		void ChangeToTrue(int id);
 	}
 }
