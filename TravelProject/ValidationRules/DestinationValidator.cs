@@ -24,6 +24,21 @@ namespace TravelProject.ValidationRules
 				.NotEmpty().WithMessage("Gün-Gece Boş Geçilemez")
 				.MaximumLength(30).WithMessage("Maksimum 30 Karakter Olmalıdır")
 				.MinimumLength(2).WithMessage("Minumum 2 Karakter Olmalıdır");
+
+			RuleFor(d => d.DestinationCapacity)
+				.NotEmpty().WithMessage("Kapasite Boş Geçilemez")
+				.Must(p => p > 0).WithMessage("Kapasite Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz
+
+			RuleFor(d => d.DestinationPrice)
+				.NotEmpty().WithMessage("Fiyat Boş Geçilemez")
+				.Must(p => p > 0).WithMessage("Fiyat Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz
+
+			RuleFor(d => d.DestinationImage)
+				.NotEmpty().WithMessage("Ana Görsel Boş Geçilemez");
+
+			RuleFor(d => d.DestinationDescription)
+				.NotEmpty().WithMessage("Açıklama Boş Geçilemez");
+				
 		}
 	}
 }

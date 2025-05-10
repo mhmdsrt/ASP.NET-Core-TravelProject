@@ -24,14 +24,20 @@
     <div class="form-group">
         @Html.Label("Kapasite")
         <input type="text" asp-for="DestinationCapacity" class="form-control" />
+        <span asp-validation-for="DestinationCapacity" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Fiyatlandırma")
         <input type="text" asp-for="DestinationPrice" class="form-control" />
+        <span asp-validation-for="DestinationPrice" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Ana Görsel")
         <input type="text" asp-for="DestinationImage" class="form-control" />
+        <span asp-validation-for="DestinationImage" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Detay Alanı için Görsel")
@@ -40,6 +46,8 @@
     <div class="form-group">
         @Html.Label("Açıklama")
         <textarea cols="30" rows="5" asp-for="DestinationDescription" class="form-control" > </textarea>
+        <span asp-validation-for="DestinationDescription" class="text-danger"></span>
+
     </div><br />
     <div class="form-group">
         @Html.Label("Detay için Açıklama 1")
