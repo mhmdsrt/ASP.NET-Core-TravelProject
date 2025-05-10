@@ -27,11 +27,11 @@ namespace TravelProject.ValidationRules
 
 			RuleFor(d => d.DestinationCapacity)
 				.NotEmpty().WithMessage("Kapasite Boş Geçilemez")
-				.Must(p => p > 0).WithMessage("Kapasite Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz
+				.Must(p => p > 0).WithMessage("Kapasite Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz, must -> zorunluluk
 
 			RuleFor(d => d.DestinationPrice)
 				.NotEmpty().WithMessage("Fiyat Boş Geçilemez")
-				.Must(p => p > 0).WithMessage("Fiyat Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz
+				.Must(p => p > 0).WithMessage("Fiyat Pozitif ve 0 'dan büyük olmalıdır"); // Girilen fiyatın pozitif ve 0 liradan fazla olmasını sağlıyoruz, must -> zorunluluk
 
 			RuleFor(d => d.DestinationImage)
 				.NotEmpty().WithMessage("Ana Görsel Boş Geçilemez");
