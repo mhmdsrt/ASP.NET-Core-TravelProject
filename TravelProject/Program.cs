@@ -51,6 +51,15 @@ builder.Services.AddMvc(config =>
 
 
 
+/*
+ Bu projede tanýmlanmýþ tüm AutoMapper Frameworkundeki Profil sýnýfýndan miras alan classlarý bul ve CreateMap<> kurallarýný kaydet
+Diðer görevi ise IMapper mapper isteyen yerlerden DI sistemi ile  mapper nesnesini enjekte etmesi.
+Yani diðer bir deyiþle IMapper DI sistemine eklenir.
+ */
+builder.Services.AddAutoMapper(typeof(Program)); 
+
+
+
 
 // Bu satýr DI'ya tüm validatorlarý tek kod satýrý ile ekler:
 builder.Services.AddValidatorsFromAssemblyContaining<DestinationValidator>(); // Controller tarafýnda new'lemekten kurtulup DI ile enjekte ediyoruz
@@ -101,6 +110,7 @@ builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddScoped<IAppUserService, AppUserService>();
+builder.Services.AddScoped<IContactUsService, ContactUsService>();
 
 
 
@@ -117,6 +127,7 @@ builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
 builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
+builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

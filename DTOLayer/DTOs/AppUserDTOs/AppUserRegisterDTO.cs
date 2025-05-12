@@ -19,13 +19,13 @@ Yani AppUser'ı direkt oturum açma yerinde kullanmak ciddi güvenlik acıkları
 
 */
 {
-	public class AppUserRegisterDTOs
+	public class AppUserRegisterDTO
 	{
 		public string Name { get; set; }
 		public string SurName { get; set; }
 		public string UserName { get; set; }
 		public string UserMail { get; set; }
-		public string Password { get; set; }
+		public string Password { get; set; } 
 		public string PasswordConfirm { get; set; }
 
 		/*

@@ -14,6 +14,7 @@ namespace DataAccessLayer.Repository
 	public class GenericRepository<T> : IGenericRepository<T> where T : class
 	{
 		private readonly Context _context;
+
 		public GenericRepository(Context context)
 		{
 			_context = context;
