@@ -1,0 +1,23 @@
+﻿@model AnnouncementUpdateDTO
+@{
+    ViewData["Title"] = "UpdateAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Duyuruyu Güncelle</h1>
+
+<form asp-area="Admin" asp-controller="Announcement" asp-action="UpdateAnnouncement" method="post">
+    @Html.HiddenFor(i=>i.AnnouncementID)
+    <div>
+        @Html.Label("Duyuru Başlığı")
+        <input type="text" asp-for="AnnouncementTitle" class="form-control" />
+        <span asp-validation-for="AnnouncementTitle" class="text-danger"></span>
+    </div><br />
+    <div>
+        @Html.Label("Duyuru İçeriği")
+        <textarea type="text" cols="30" rows="5" asp-for="AnnouncementContent" class="form-control"> </textarea>
+        <span asp-validation-for="AnnouncementContent" class="text-danger"></span>
+    </div><br />
+    <button class="btn btn-outline-warning">Güncelle</button>
+</form>
+

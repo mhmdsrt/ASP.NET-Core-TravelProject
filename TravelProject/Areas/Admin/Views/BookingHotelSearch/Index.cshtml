@@ -1,0 +1,41 @@
+﻿@using TravelProject.Areas.Admin.Models
+@model IEnumerable<BookingHotelSeachViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<form asp-area="Admin" asp-controller="BookingHotelSearch" asp-action="GetIdByCity" method="post">
+    <h1>Booking Otel Rezervasyon</h1>
+    <input type="text" name="cityName" placeholder="Şehir Giriniz 'Paris'" />
+    <button class="btn btn-outline-info">Otel Ara</button><br /><br />
+</form>
+<table class="table table-striped">
+    <tr>
+        <th>Görsel</th>
+        <th>Otel Adı</th>
+        <th>Puanı( /10)</th>
+        <th>Değerlendirme</th>
+        <th>Uzaklık</th>
+        <th>Konaklama TİPİ</th>
+        <th>Tasarım</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.max_1440_photo_url" style="height:120px;width:120px;object-fit:cover;" />
+            </td>
+            <td>@item.hotel_name</td>
+            <td>@item.review_score</td>
+            <td>@item.review_score_word</td>
+            <td>@item.distances.FirstOrDefault()?.text</td>
+            <td>@item.accommodation_type_name</td>
+            <td>
+                @Html.Raw(item.unit_configuration_label) @*@Html.Raw() -> metodu sayesinde Html içeriği aynen gösterilir örneğin: <b> 1 oda 2 yatak <b>*@
+            </td>
+        </tr>
+    }
+</table>

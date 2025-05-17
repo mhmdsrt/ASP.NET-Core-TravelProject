@@ -22,7 +22,7 @@ namespace BusinessLayer.Concrete
 		{
 			_repository = repository; // Dependency injection yaparak hangi servis ile çalışacaksak o servisin constructor metodundan gelen repository'u alıyoruz.
 		}
-		
+
 		public T GetById(int id)
 		{
 			return _repository.GetById(id);
@@ -38,16 +38,20 @@ namespace BusinessLayer.Concrete
 
 		public void Delete(int id)
 		{
-			_repository.Delete(id);
+			var entity = GetById(id);
+			if (entity != null)
+			{
+				_repository.Delete(id);
+			}
 		}
 
 		public void Update(T entity)
 		{
 			_repository.Update(entity);
-			
+
 		}
 
-		
+
 
 	}
 }

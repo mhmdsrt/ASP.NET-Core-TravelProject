@@ -42,6 +42,7 @@ namespace TravelProject.Mapping.AutoMapperProfile
 		Map<T>() metodu da bu interface'in içindedir.
 
 		 _mapper.Map<<Destination>>(Source) -> Paranten içindeki kaynağı <> içerisinde hedefe dönüştürür
+
 	     _mapper.Map<IEnumerable<AnnouncementListDTO>>(_announcementService.GetAll()) ifadesi açıklama:
 		 (_announcementService.GetAll()) -> Nereden? , Dönüşüm yapacağımız Kaynak
 		 <IEnumerable<AnnouncementListDTO>> -> Nereye ? , Dönüşüm yapacağımız Hedef
@@ -63,6 +64,8 @@ namespace TravelProject.Mapping.AutoMapperProfile
 
 			CreateMap<AppUserRegisterDTO, AppUser>().ReverseMap(); // ReverseMap() -> Yazılan dönüşümün tam tersininde yapılacağını bildirdik.
 			CreateMap<Announcement, AnnouncementListDTO>().ReverseMap();
+			CreateMap<AnnouncementAddDTO, Announcement>().ReverseMap();
+			CreateMap<AnnouncementUpdateDTO, Announcement>().ReverseMap();
 		}
 	}
 }

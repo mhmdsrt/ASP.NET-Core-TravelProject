@@ -1,4 +1,6 @@
-﻿using EntityLayer.Concrete;
+﻿using AutoMapper;
+using DTOLayer.DTOs.AppUserDTOs;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +13,14 @@ namespace TravelProject.Controllers
 	{
 		private readonly UserManager<AppUser> _userManager; // Kullanıcıyı kaydetmek için kullanılan servis
 		private readonly SignInManager<AppUser> _signInManager; // Oturum Açmak için kullanılan servis
+		private readonly IMapper _mapper;
 
 
-		public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+		public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_mapper = mapper;
 		}
 
 		[HttpGet]
@@ -26,25 +30,27 @@ namespace TravelProject.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> SignUp(UserRegisterViewModel userRegisterViewModel) // SignUp -> Uye Ol 
+		public async Task<IActionResult> SignUp(AppUserRegisterDTO appUserRegisterDTO) // SignUp -> Uye Ol 
 		{
-			AppUser appUser = new AppUser()
-			{
-				// Şifre bu kod bloğunda verilmez çünkü şifre Identity tarafından Hash’lenerek güvenli şekilde saklanır.
+			// Şifre bu kod bloğunda verilmez çünkü şifre Identity tarafından Hash’lenerek güvenli şekilde saklanır.
+			//AppUser appUser = new AppUser()
+			//{
+				
 
-				Name = userRegisterViewModel.Name,
-				SurName = userRegisterViewModel.SurName,
-				Email = userRegisterViewModel.UserMail,
-				UserName = userRegisterViewModel.UserName
-			};
+			//	Name = userRegisterViewModel.Name,
+			//	SurName = userRegisterViewModel.SurName,
+			//	Email = userRegisterViewModel.UserMail,
+			//	UserName = userRegisterViewModel.UserName
+			//};
 			/*
 			  Şifre arka tarafda Hash'lendiği için böyle bir yapı kullandık.
 			 */
-			if (userRegisterViewModel.Password == userRegisterViewModel.PasswordConfirm && userRegisterViewModel.Password != null)
+			if (appUserRegisterDTO.Password == appUserRegisterDTO.PasswordConfirm && appUserRegisterDTO.Password != null)
 			{
-				var result = await _userManager.CreateAsync(appUser, userRegisterViewModel.Password);
+				var result = await _userManager.CreateAsync(_mapper.Map<AppUser>(appUserRegisterDTO), appUserRegisterDTO.Password);
+				// Formdan gelen DTO nesnesini AppUser' nesnesine çevirerek CreateAsync Metoduna parametre olarak veriyoruz
 				/*
-				 await _userManager.CreateAsync(appUser, userRegisterViewModel.Password) -> kullanıcıyı parolarısını hash'leyerek database'e kaydeder
+				 await _userManager.CreateAsync(appUser, appUserRegisterDTO.Password) -> kullanıcıyı parolarısını hash'leyerek database'e kaydeder
 				 */
 
 				if (result.Succeeded)
@@ -63,7 +69,7 @@ namespace TravelProject.Controllers
 					}
 				}
 			}
-			return View(userRegisterViewModel);
+			return View(appUserRegisterDTO);
 			/*
 			  Kayıt başarısızsa veya form geçersizse, aynı sayfa tekrar gösterilir.
               Kullanıcının girdiği veriler kaybolmasın diye userRegisterViewModel geri gönderilir.
@@ -77,7 +83,7 @@ namespace TravelProject.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> SignIn(UserSignInViewModel userSignInViewModel)
+		public async Task<IActionResult> SignIn(AppUserLoginDTO appUserLoginDTO)
 		{
 			/*
 			 Valid -> Geçerli
@@ -88,7 +94,7 @@ namespace TravelProject.Controllers
 			 */
 			if (ModelState.IsValid)
 			{
-				var result = await _signInManager.PasswordSignInAsync(userSignInViewModel.UserName, userSignInViewModel.Password, false, true);
+				var result = await _signInManager.PasswordSignInAsync(appUserLoginDTO.UserName, appUserLoginDTO.Password, false, true);
 				if (result.Succeeded) // Success -> Başarılı olmak, başarılı
 				{
 					return RedirectToAction("Index", "Profile", new { area = "Member" });
