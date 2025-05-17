@@ -13,7 +13,7 @@ namespace TravelProject.Areas.Admin.Controllers
 	{
 		public async Task<IActionResult> Index(string? cityID= "-1456928")
 		{
-			var client = new HttpClient(); // API isteği atman için istemci oluşturuyoruz
+			var client = new HttpClient(); // API isteği atmak için istemci oluşturuyoruz
 			var request = new HttpRequestMessage // request -> istek
 
 			{
@@ -34,7 +34,6 @@ namespace TravelProject.Areas.Admin.Controllers
 				var body = await response.Content.ReadAsStringAsync(); // Gelen JSON verisini düz metin olarak alır
 																	   // SerializeObject() -> C# Nesnesini JSON formatına dönüştürür. Serialize Object -> Nesneyi Serileştir
 																	   // DeserializeObject<T>() -> JSON formatındaki metni C# nesnesine dönüştürür
-				//var bodyReplace = body.Replace(",", ""); // body textindeki tüm "," karakterlerini kaldırıyoruz
 				var values = JsonConvert.DeserializeObject<BookingHotelSeachViewModel>(body); // JSON verisi, BookingHotelSeachViewModel sınıfı tipine dönüştürülür
 				return View(values.result);
 			}
