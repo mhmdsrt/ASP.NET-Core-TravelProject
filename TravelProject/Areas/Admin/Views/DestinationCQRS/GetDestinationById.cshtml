@@ -1,0 +1,31 @@
+﻿@model GetDestinationByIdQueryResult
+@{
+    ViewData["Title"] = "GetDestinationById";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>GetDestinationById</h1>
+
+<form asp-area="Admin" asp-controller="DestinationCQRS" asp-action="GetDestinationById" method="post">
+    <div>
+        <label>ID</label>
+        <input  asp-for="Id" class="form-control"/>
+    </div><br />
+    <div>
+        <label>Şehir</label>
+        <input asp-for="City" class="form-control" />
+    </div><br />
+    <div>
+        <label>Konaklama Süresi</label>
+        <input asp-for="DayNight" class="form-control" />
+    </div><br /> 
+    <div>
+        <label>Ücret</label>
+        <input asp-for="Price" class="form-control" />
+    </div><br /> 
+    <div>
+        <label>Kapasite</label>
+        <input asp-for="Capacity" class="form-control" />
+    </div><br /> 
+    <button class="btn btn-outline-primary">Güncelle</button>
+</form>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<GetAllDestinationQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Rotalar</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width:130px;">Görsel</th>
+        <th>Şehir</th>
+        <th>Konaklama Süresi</th>
+        <th>Ücret</th>
+        <th>Kapasite</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">
+                <img src="@item.Image" style="height:120px; width:120px; object-fit:cover;" />
+            </td>
+            <td>@item.City</td>
+            <td>@item.DayNight</td>
+            <td>@item.Price</td>
+            <td>@item.Capacity</td>
+        </tr>
+    }
+</table>

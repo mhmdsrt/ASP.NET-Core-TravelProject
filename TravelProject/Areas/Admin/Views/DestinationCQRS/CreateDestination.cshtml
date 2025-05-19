@@ -1,0 +1,31 @@
+﻿@model CreateDestinationCommand
+@{
+    ViewData["Title"] = "CreateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>CreateDestination</h1>
+
+<form asp-area="Admin" asp-controller="DestinationCQRS" asp-action="CreateDestination" method="post">
+    <div>
+        <label>Şehir</label>
+        <input type="text" asp-for="DestinationCity" class="form-control" />
+    </div><br />
+    <div>
+        <label>Açıklama</label>
+        <input asp-for="DestinationDescription" class="form-control" />
+    </div><br />
+    <div>
+        <label>Konaklama Süresi</label>
+        <input asp-for="DestinationAccomodationDay" class="form-control" />
+    </div><br />
+    <div>
+        <label>Ücret</label>
+        <input asp-for="DestinationPrice" class="form-control" />
+    </div><br />
+    <div>
+        <label>Kapasite</label>
+        <input asp-for="DestinationCapacity" class="form-control" />
+    </div><br />
+    <button class="btn btn-outline-success">Rota Ekle</button>
+</form>

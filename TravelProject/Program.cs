@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
+using TravelProject.CQRS.Handlers.DestinationHandlers;
 using TravelProject.Models;
 using TravelProject.ValidationRules;
 
@@ -29,9 +30,12 @@ kullanmasýný söyler
 builder.Services.AddIdentity<AppUser, AppRole>()
 	.AddEntityFrameworkStores<Context>()
 	.AddErrorDescriber<CustomIdentityValidator>();
-	
-	
 
+
+// DI sistemine kaydediyoruz. DestinationCQRSController tarafýndan Constructor içerisinde bekkliyor
+builder.Services.AddScoped<GetAllDestinationQueryHandler>();
+builder.Services.AddScoped<GetDestinationByIdQueryHandler>();
+builder.Services.AddScoped<CreateDestinationCommandHandler>();
 
 
 // Authorization -> Yetkikendirme, Policy -> Politika ,Authenticated -> Kimliði Doðrulanmýþ, Require -> Gerekli Kýlmak
