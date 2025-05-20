@@ -9,23 +9,23 @@
 <form asp-area="Admin" asp-controller="DestinationCQRS" asp-action="GetDestinationById" method="post">
     <div>
         <label>ID</label>
-        <input  asp-for="Id" class="form-control"/>
+        <input  asp-for="DestinationID" class="form-control"/>
     </div><br />
     <div>
         <label>Şehir</label>
-        <input asp-for="City" class="form-control" />
+        <input asp-for="DestinationCity" class="form-control" />
     </div><br />
     <div>
         <label>Konaklama Süresi</label>
-        <input asp-for="DayNight" class="form-control" />
+        <input asp-for="DestinationAccomodationDay" class="form-control" />
     </div><br /> 
     <div>
         <label>Ücret</label>
-        <input asp-for="Price" class="form-control" />
+        <input asp-for="DestinationPrice" class="form-control" />
     </div><br /> 
     <div>
         <label>Kapasite</label>
-        <input asp-for="Capacity" class="form-control" />
+        <input asp-for="DestinationCapacity" class="form-control" />
     </div><br /> 
     <button class="btn btn-outline-primary">Güncelle</button>
 </form>

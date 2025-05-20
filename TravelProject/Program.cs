@@ -5,6 +5,7 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,8 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 builder.Services.AddScoped<GetAllDestinationQueryHandler>();
 builder.Services.AddScoped<GetDestinationByIdQueryHandler>();
 builder.Services.AddScoped<CreateDestinationCommandHandler>();
+builder.Services.AddScoped<RemoveDestinationCommandHandler>();
+builder.Services.AddScoped<UpdateDestinationCommandHandler>();
 
 
 // Authorization -> Yetkikendirme, Policy -> Politika ,Authenticated -> Kimliði Doðrulanmýþ, Require -> Gerekli Kýlmak
@@ -58,9 +61,16 @@ builder.Services.AddMvc(config =>
 /*
  Bu projede tanýmlanmýþ tüm AutoMapper Frameworkundeki Profil sýnýfýndan miras alan classlarý bul ve CreateMap<> kurallarýný kaydet
 Diðer görevi ise IMapper mapper isteyen yerlerden DI sistemi ile  mapper nesnesini enjekte etmesi.
-Yani diðer bir deyiþle IMapper DI sistemine eklenir.
+Yani diðer bir deyiþle IMapper DI sistemine eklenir.Yani arayüzlerin nesne örneklerinin Dependency Injection sistemiyle oluþturulur.
  */
-builder.Services.AddAutoMapper(typeof(Program)); 
+builder.Services.AddAutoMapper(typeof(Program));
+
+
+/*
+ Bu projede tanýmlanmýþ tüm IRequest, IRequestHandler, INotification, INotificationHandler gibi MediatR bileþenleini bul,
+ve DI Container'a kaydet.Yani arayüzlerin nesne örneklerinin Dependency Injection sistemiyle oluþturulur.
+ */
+builder.Services.AddMediatR(typeof(Program));
 
 
 

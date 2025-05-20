@@ -1,30 +1,30 @@
-﻿using DataAccessLayer.Concrete;
+﻿using AutoMapper;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using MediatR;
 using TravelProject.CQRS.Commands.DestinationCommands;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TravelProject.CQRS.Handlers.DestinationHandlers
 {
-	public class CreateDestinationCommandHandler
+	public class CreateDestinationCommandHandler : IRequestHandler<CreateDestinationCommand, Unit>
 	{
 		private readonly Context _context;
-
-		public CreateDestinationCommandHandler(Context context)
+		private readonly IMapper _mapper;
+		public CreateDestinationCommandHandler(Context context,IMapper mapper)
 		{
 			_context = context;
+			_mapper = mapper;
 		}
 
-		public void Handle(CreateDestinationCommand command)
+		public async Task<Unit> Handle(CreateDestinationCommand request, CancellationToken cancellationToken)
 		{
-			_context.Destinations.Add(new Destination
-			{
-				DestinationCity=command.DestinationCity,
-				DestinationAccomodationDay=command.DestinationAccomodationDay,
-				DestinationPrice=command.DestinationPrice,
-				DestinationDescription=command.DestinationDescription,
-				DestinationCapacity=command.DestinationCapacity,
-				DestinationStatus=true
-			});
-			_context.SaveChanges();
+
+			await _context.Destinations.AddAsync(_mapper.Map<Destination>(request));
+			
+			await _context.SaveChangesAsync();
+
+			return Unit.Value;
 		}
 	}
 }

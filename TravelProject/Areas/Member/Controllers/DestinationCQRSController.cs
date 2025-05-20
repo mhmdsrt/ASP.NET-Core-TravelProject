@@ -17,7 +17,7 @@ namespace TravelProject.Areas.Member.Controllers
 		}
 		public IActionResult Index()
 		{
-			return View(_getAllDestinationQueryHandler.Handle());
+			return View();
 		}
 	}
 }

@@ -3,6 +3,8 @@ using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http.HttpResults;
+using TravelProject.CQRS.Commands.DestinationCommands;
+using TravelProject.CQRS.Results.DestinationResults;
 
 namespace TravelProject.Mapping.AutoMapperProfile
 {
@@ -66,6 +68,10 @@ namespace TravelProject.Mapping.AutoMapperProfile
 			CreateMap<Announcement, AnnouncementListDTO>().ReverseMap();
 			CreateMap<AnnouncementAddDTO, Announcement>().ReverseMap();
 			CreateMap<AnnouncementUpdateDTO, Announcement>().ReverseMap();
+			CreateMap<GetAllDestinationQueryResult, Destination>().ReverseMap();
+			CreateMap<CreateDestinationCommand, Destination>().ReverseMap();
+			CreateMap<GetDestinationByIdQueryResult, Destination>().ReverseMap();
+			CreateMap<UpdateDestinationCommand, Destination>().ReverseMap();
 		}
 	}
 }
