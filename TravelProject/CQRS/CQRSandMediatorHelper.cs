@@ -87,7 +87,7 @@
 		Yani TRequest tipi dışında istekleri alamaz, TResponse tipi dışında da yanıtı kesinlikle dönemez.
 
 		Böylelikle MediatR, IMediator.Send(TRequest) metodu ile TRequest tipinde istek geldiğinde isteğe uygun Handler'i eşliyor 
-		ve bu handler'ı çağrıyor. Handler ise "IRequestHandler<TRequest, TResponse>" interface'i impelement ettiğinden 
+		ve bu handler'ı çağrıyor. Handler metodu ise "IRequestHandler<TRequest, TResponse>" interface'i impelement ettiğinden 
         dolayı o isteğe uygun TResponse döndürüyor.
 
 		Unit -> MediatR 'da değer döndürmeyen Handle metotlarında void yerine kullandığımız yapıdır.

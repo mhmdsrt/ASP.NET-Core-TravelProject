@@ -99,6 +99,9 @@ doðrulayýcý istendiðinde bu tek satýrlýk kod sayesinde otomatik olarak DI yapýla
  */
 builder.Services.AddDbContext<Context>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); // appsettings.json dosyasýndaki "DefaultConnection" baðlantý dizesini alýyoruz.
+
+
+
 /*
   Dependecy Injection yapýsý sayesinde IAboutRepository isteyen her yere AboutRepository nesnesini otomatik olarak enjekte edicek(vericek).
  

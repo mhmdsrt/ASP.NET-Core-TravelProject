@@ -11,5 +11,6 @@ namespace DataAccessLayer.Abstract
 	{
 		void ChangeToFalse(int id);
 		void ChangeToTrue(int id);
+		int GetGuideCount(); // toplam rehber sayısını getir
 	}
 }

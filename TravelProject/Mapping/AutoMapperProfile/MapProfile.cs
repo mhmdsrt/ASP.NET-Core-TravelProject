@@ -28,7 +28,7 @@ namespace TravelProject.Mapping.AutoMapperProfile
 	 Dolayısıyla API ve View performansı artar az veri olacağından dolayı performans artışı sağlanır.
 	 Ayrıca PasswordHash, ID gibi hassas alanları taşımamıza gerek yok sadece ihtiyacımız olan ve kullanacağımız alanları taşıyabileceğiz.
 	 Güvenlik açısından çok önemli.
-	 2) Veri tabanı değilse bile yani Entitylerimiz değişse bile UI(User Interface) etkilenmez çünkü UI tarafında doğrudan 
+	 2) Veri tabanı değişse bile yani Entitylerimiz değişse bile UI(User Interface) etkilenmez çünkü UI tarafında doğrudan 
 	 Entitylerimizi değil, Entitylere karşılık gelen DTO'ları kullanmış olacağız. Bu sayede UI, Entity'lere bağımlı olmayacak.
 	 
 	 */

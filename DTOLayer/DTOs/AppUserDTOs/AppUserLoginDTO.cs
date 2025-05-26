@@ -7,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace DTOLayer.DTOs.AppUserDTOs
 {
-	/*
+	
+	public class AppUserLoginDTO
+	{
+		public string? UserName { get; set; }
+		public string? Password { get; set; }
+	}
+
+}
+
+
+
+
+
+
+
+/*
  AppUser gibi özelleştirilmiş bir veri tabanında tablomuz varken bu classı kullanmamızın sebepleri şunlardır:
  AppUser tablosunda cok fazla alan yani tüm kullanıcı bilgileri var  ama biz oturum açarken sadece 2 alan kullanacağız.
  Ayrıca AppUser'da şifre  hashlenmiş olarak kayıtlıdır yan dümdüz şifrenin kendisi yazmaz veritabanında.
@@ -17,10 +32,3 @@ namespace DTOLayer.DTOs.AppUserDTOs
 Yani AppUser'ı direkt oturum açma yerinde kullanmak ciddi güvenlik acıklarına sebep olur.
 
 */
-	public class AppUserLoginDTO
-	{
-		public string? UserName { get; set; }
-		public string? Password { get; set; }
-	}
-
-}

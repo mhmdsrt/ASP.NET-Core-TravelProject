@@ -10,7 +10,7 @@ namespace EntityLayer.Concrete
 
 	/*
 	 Varsayılan olarak Identity, Primary Key 'ler için string tipini kullanır biz int kullanmak istediğimiz için <int> verdik.
-	 Bu classı UndetityUser'ın bize verdiği tablodaki sütunlardan ekstra yeni sütun ekleyebilmek için kullanıyoruz.
+	 Bu classı IndetityUser'ın bize verdiği tablodaki sütunlardan ekstra yeni sütun ekleyebilmek için kullanıyoruz.
 
 	 */
 	public class AppUser : IdentityUser<int> // Identity Framework'ünün bize verdiği tablolara ekstra sütun ekleyebilmek için kullanacağımız AppUser Classı 

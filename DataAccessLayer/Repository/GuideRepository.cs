@@ -34,5 +34,10 @@ namespace DataAccessLayer.Repository
 
 		}
 
+		public int GetGuideCount() // toplam rehber sayısını getir
+		{
+			return _context.Guides.Count();
+		}
+
 	}
 }

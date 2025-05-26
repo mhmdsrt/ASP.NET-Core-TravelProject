@@ -15,7 +15,7 @@ namespace BusinessLayer.Concrete
 
 		public About2Service(IAbout2Repository about2Repository) : base(about2Repository)
 		{
-
+			_about2Repository = about2Repository;
 		}
 	}
 }

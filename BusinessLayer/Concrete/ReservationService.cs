@@ -35,5 +35,9 @@ namespace BusinessLayer.Concrete
 			// Giriş yapan kullanıcı id sine göre eski rezervasyonları getir
 			return _reservationRepository.GetAllReservationByOld(id);
 		}
+		public int GetReservationCount()
+		{
+			return _reservationRepository.GetReservationCount();
+		}
 	}
 }

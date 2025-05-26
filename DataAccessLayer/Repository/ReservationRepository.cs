@@ -43,6 +43,11 @@ ThenInclude() metodu iç içe ilişkili varlıkları yüklemek için kullanılı
 			// Giriş yapan kullanıcı id sine göre eski rezervasyonları getir
 			return _context.Reservations.Include(d => d.Destination).Include(a => a.AppUser).Where(a => a.AppUserID == id && a.ReservationStatus == "Geçmiş");
 		}
+
+		public int GetReservationCount() // Toplam rezervasyon sayısını getir
+		{
+			return _context.Reservations.Count();
+		}
 	}
 
 }

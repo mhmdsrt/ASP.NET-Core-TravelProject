@@ -4,38 +4,45 @@
 <section class="w3l-grids-3 py-5">
     <div class="container py-md-5">
         <div class="title-content text-left mb-lg-5 mb-4">
-            <h6 class="sub-title">Visit</h6>
-            <h3 class="hny-title">Populer Seyahatler</h3>
+            <h6 class="sub-title">Seyehatini Planla</h6>
+            <h3 class="hny-title">Turlar</h3>
         </div>
 
-        <div class="row bottom-ab-grids">
-            <!--/row-grids-->
+        <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-lg-6 subject-card mt-lg-0 mt-4">
-                    <div class="subject-card-header p-4">
-                        <a href="#" class="card_title p-lg-4d-block">
-                            <div class="row align-items-center">
-                                <div class="col-sm-5 subject-img">
-                                    <img src="@item.DestinationImage" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
-                                    <h4>@item.DestinationCity</h4>
-                                    <p>@item.DestinationAccomodationDay</p>
-                                    <div class="dst-btm">
-                                        <h6 class=""> Start From </h6>
-                                        <span>@item.DestinationPrice ₺</span>
-                                    </div>
-                                    <p class="sub-para">@item.DestinationDescription</p>
-                                </div>
-                            </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <a href="/Destination/DestinationDetails/@item.DestinationID">
+                            <img src="@item.DestinationImage"
+                                 class="card-img-top"
+                                 style="height: 250px; object-fit: cover; "
+                                 alt="@item.DestinationCity">
                         </a>
+
+                        <div class="card-body d-flex flex-column">
+                            <a href="/Destination/DestinationDetails/@item.DestinationID">
+                                <h5 class="card-title">@item.DestinationCity</h5>
+                            </a>
+                            <p class="card-text">@item.DestinationAccomodationDay</p>
+                            <div class="mt-auto">
+                                <p class="mb-1"><strong style="color:#FF1654;">@item.DestinationPrice ₺'den   </strong>   Başlayan Fiyatlarla..</p>
+                                <p class="text-muted">@item.DestinationDescription</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
             }
         </div>
-
     </div>
 </section>
+<style>
+    .card:hover .card-title {
+        color: #FF1654;
+        transition: color 0.3s ease;
+    }
+
+    .card-title:hover {
+        color: #FF1654;
+    }
+</style>

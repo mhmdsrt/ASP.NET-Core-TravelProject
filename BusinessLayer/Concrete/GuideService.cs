@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace BusinessLayer.Concrete
 		{
 			_guideRepository.ChangeToTrue(id);
 		}
+		public int GetGuideCount()
+		{
+			return _guideRepository.GetGuideCount();
+		}
+
 
 	}
 }

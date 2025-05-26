@@ -9,28 +9,6 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-	/*
-            Builder -> Kurucu
-            Configuration -> Yapılandırma
-            Options -> Seçenekler
-            integrated -> Entegre
-            security -> güvenlik
-            on -> üzerinde
-         */
-	/*
-     ORM (Object-Relational Mapping) -> Nesne-İlişkisel Eşleme
-     Nesne yönelimli progralama ile Veri tabanı arasında köprü görevi görevi görür.
-     Class'ı tablo, property'leri ise sütun olarak eşler.
-
-     Bu projede ORM aracı olarak Entity Framework kullanıyoruz.
-     */
-
-	/*
-	 IdentityDbContext deki generic ifadelerin açıklaması:
-	 AppUser -> Kullanacağımız özelleştirilmiş kullanıcı sınıfı, IdentityUser<int>'den türetilmiş
-	 AppRole -> Kullanacağımız özelleştirilmiş Rol Sınıfı, IdentityRole<int>'den türetilmiş
-	 int -> Primary keyler için kullanacağımız veri tipi (default olarak string'tir)
-	 */
 	public class Context : IdentityDbContext<AppUser, AppRole, int>
 	{
 
@@ -55,3 +33,26 @@ namespace DataAccessLayer.Concrete
 		public DbSet<Announcement> Announcements { get; set; }
 	}
 }
+
+/*
+		Builder -> Kurucu
+		Configuration -> Yapılandırma
+		Options -> Seçenekler
+		integrated -> Entegre
+		security -> güvenlik
+		on -> üzerinde
+	 */
+/*
+ ORM (Object-Relational Mapping) -> Nesne-İlişkisel Eşleme
+ Nesne yönelimli progralama ile Veri tabanı arasında köprü görevi görevi görür.
+ Class'ı tablo, property'leri ise sütun olarak eşler.
+
+ Bu projede ORM aracı olarak Entity Framework kullanıyoruz.
+ */
+
+/*
+ IdentityDbContext deki generic ifadelerin açıklaması:
+ AppUser -> Kullanacağımız özelleştirilmiş kullanıcı sınıfı, IdentityUser<int>'den türetilmiş
+ AppRole -> Kullanacağımız özelleştirilmiş Rol Sınıfı, IdentityRole<int>'den türetilmiş
+ int -> Primary keyler için kullanacağımız veri tipi (default olarak string'tir)
+ */
