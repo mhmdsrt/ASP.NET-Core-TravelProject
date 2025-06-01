@@ -15,7 +15,7 @@
                 <h2 class="title">Tur Detayları</h2>
                 <ul class="breadcrumbs-custom-path mt-2">
                     <li><a href="/Home/Index">Ana Sayfa</a></li>
-                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Single Post </li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Tur Detayları</li>
                 </ul>
             </div>
         </div>
@@ -24,28 +24,9 @@
     <!--/blog-->
     <div class="py-5 w3l-homeblock1 text-center">
         <div class="container mt-md-3">
-            <h3 class="blog-desc-big text-center mb-4">
-                Your Blog Posts are Boring? Here are 9 Tips for
-                Making your Writing more Interesting
+            <h3 class="blog-desc-big text-center mb-4" style="color:#FF1654;">
+                @Model.DestinationCity 
             </h3>
-            <div class="blog-post-align">
-                <div class="blog-post-img">
-                    <a href="#"><img src="~/Traversal-Liberty/assets/images/c1.jpg" alt="" class="rounded-circle img-fluid" /></a>
-                </div>
-                <div class="blog-post-info">
-                    <div class="author align-items-center mb-1">
-                        <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
-                    </div>
-                    <ul class="blog-meta">
-                        <li class="meta-item blog-lesson">
-                            <span class="meta-value"> June 13, 2020 </span>
-                        </li>
-                        <li class="meta-item blog-students">
-                            <span class="meta-value"> 6min read</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
     <section class="blog-post-main w3l-homeblock1">
@@ -64,9 +45,7 @@
 
                     <blockquote class="blockquote my-5">
                         <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
-                        Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio consectetur.Ea
-                        consequuntur illum facere aperiam sequi optio consectetur adipisicing elitFuga, suscipit
-                        totam animi, dolores magnam assumenda soluta odit harum.
+                        Sahilde kaybolan ayak izleri gibi, takvimin yaprakları da anlamını yitirir. Çünkü gerçek tatil, saatin kaç olduğunu unuttuğun andır.
                         <footer class="blockquote-footer mt-3">
                             Smith lara
                         </footer>
@@ -79,22 +58,16 @@
                             <a href="#url"><img src="@Model.DestinationDetailImage2" class="img-fluid radius-image" style="height: 290px; object-fit: cover; " alt=""></a>
                         </div>
                     </div>
-                    <h3 class="blog-desc-big m-0 mb-lg-4 mb-3">2. Paragraf</h3>
+                    <h3 class="blog-desc-big m-0 mb-lg-4 mb-3"></h3>
                     <p class="mb-4">
                         @Model.DestinationDetailDescription2
                     </p>
 
 
                     <div class="d-grid left-right mt-5 pb-md-5">
-                        <div class="buttons-singles tags">
-                            <h4>Tags :</h4>
-                            <a href="#blog-tag">Travel</a>
-                            <a href="#blog-tag">Culture</a>
-                            <a href="#blog-tag">Hotel</a>
-                            <a href="#blog-tag">Food</a>
-                        </div>
+               
                         <div class="buttons-singles">
-                            <h4>Share :</h4>
+                            <h4>Sosyal Medya :</h4>
                             <a href="#blog-share"><span class="fa fa-facebook" aria-hidden="true"></span></a>
                             <a href="#blog-share"><span class="fa fa-twitter" aria-hidden="true"></span></a>
                             <a href="#blog-share"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
@@ -103,60 +76,7 @@
                     </div>
 
                     <!--//author-card-->
-                    <div class="author-card mt-5">
-                        <div class="row align-items-center">
-                            <div class="col-sm-3 col-6">
-                                <div>
-                                    <img src="~/Traversal-Liberty/assets/images/c3.jpg" alt="" class="rounded-circle img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-sm-9 mt-sm-0 mt-3">
-                                <h3 class="mb-3 title">Alexander Ronald</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, sed et excepturi.
-                                    Distinctio fugit odit? Fugit ipsam. Lorem ipsum dolor sit.
-                                </p>
-                                <ul class="author-icons mt-4">
-                                    <li>
-                                        <a class="facebook" href="#url">
-                                            <span class="fa fa-facebook"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="twitter" href="#url">
-                                            <span class="fa fa-twitter"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="google" href="#url">
-                                            <span class="fa fa-google-plus"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="linkedin" href="#url">
-                                            <span class="fa fa-linkedin"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="github" href="#url">
-                                            <span class="fa fa-github"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dribbble" href="#url">
-                                            <span class="fa fa-dribbble"
-                                                  aria-hidden="true"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("GetGuideByDestination", new { guideId = Model.GuideID })
                     @await Component.InvokeAsync("GetAllCommentByDestinationId", new { id = Model.DestinationID }) @* Asenkron olarak Gidilecek yere göre Tüm Yorumları getir*@
                     @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml") @*Yorum yapma yerini PartialView olarak asenkron şekilde çağır*@
                 </div>

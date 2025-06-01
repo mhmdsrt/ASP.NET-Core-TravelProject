@@ -26,6 +26,10 @@ namespace BusinessLayer.Concrete
 		{
 			return _commentRepository.GetAllCommentIncludeDestination();
 		}
+		public int GetCommentCountByDestinationId(int id)
+		{
+			return _commentRepository.GetCommentCountByDestinationId(id);
+		}
 
 	}
 }

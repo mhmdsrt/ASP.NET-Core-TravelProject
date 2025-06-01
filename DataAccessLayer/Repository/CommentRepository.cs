@@ -25,15 +25,20 @@ namespace DataAccessLayer.Repository
 			_context = context;
 		}
 
-		public IEnumerable<Comment> GetAllCommentByDestinationId(int id)
+		public IEnumerable<Comment> GetAllCommentByDestinationId(int id) // AppUser'ı dahil ederek Dest ID'ye göre tüm yorumları getirç
 		{
-			return _context.Comments.Where(i => i.DestinationID == id);
+			return _context.Comments.Where(i => i.DestinationID == id).Include(a=>a.AppUser);
 		}
 		public IEnumerable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 		{
 			return _context.Comments.Include(d => d.Destination);
 		}
 
+
+		public int GetCommentCountByDestinationId(int id) // rotaya yapılan yorum sayısını getir
+		{
+			return _context.Comments.Where(d => d.DestinationID == id).Count();
+		}
 
 	}
 

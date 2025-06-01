@@ -12,6 +12,7 @@ namespace TravelProject.ViewComponents.Comment
 		}
 		public IViewComponentResult Invoke(int id)
 		{
+			ViewBag.CommentCount = _commentService.GetCommentCountByDestinationId(id);
 			return View(_commentService.GetAllCommentByDestinationId(id));
 		}
 	}

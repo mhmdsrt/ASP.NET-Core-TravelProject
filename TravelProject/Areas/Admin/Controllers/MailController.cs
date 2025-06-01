@@ -22,6 +22,7 @@ namespace TravelProject.Areas.Admin.Controllers
 		{
 			try
 			{
+
 				MimeMessage mimeMessage = new MimeMessage(); // Mailkit framework'ünden gelir ve boş e-posta mesajı oluşturur
 				// Admin -> e-postayı atan tarafın görünen adı
 				MailboxAddress mailboxAddressFrom = new MailboxAddress("MHMMD Seyahat Hizmeleri A.Ş.", "seyehathizmetlerimhmmd@gmail.com");
@@ -48,6 +49,8 @@ namespace TravelProject.Areas.Admin.Controllers
 				smtpClient.Disconnect(true); // SMTP bağlantısını düzgün ve güvenli şekilde sonlandırır.
 
 				ViewBag.Message = "✅ Mail başarıyla gönderildi.";
+
+
 
 			}
 			catch (Exception ex)

@@ -24,7 +24,9 @@ namespace EntityLayer.Concrete
 		public string? DestinationDetailImage { get; set; } // Gidilecek yerin ayrıntı bölümündeki resim 
 		public string? DestinationDetailImage2 { get; set; } // Gidilecek yerin ayrıntı bölümündeki resim 
 		public ICollection<Comment> Comments { get; set; } // Gidilecek yerlere ait birden fazla yorum olabileceğinden dolayı
-
 		public ICollection<Reservation> Reservations { get; set; } // Bir gidilecek şehir birden fazla rezervasyonun içerisinde bulunabilir
+		public int? GuideID { get; set; }
+		public Guide? Guide { get; set; }
+
 	}
 }

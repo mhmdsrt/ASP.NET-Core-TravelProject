@@ -16,7 +16,7 @@
                         <a href="/Destination/DestinationDetails/@item.DestinationID">
                             <img src="@item.DestinationImage"
                                  class="card-img-top"
-                                 style="height: 250px; object-fit: cover; "
+                                 style="height: 250px; "
                                  alt="@item.DestinationCity">
                         </a>
 
@@ -24,10 +24,12 @@
                             <a href="/Destination/DestinationDetails/@item.DestinationID">
                                 <h5 class="card-title">@item.DestinationCity</h5>
                             </a>
-                            <p class="card-text">@item.DestinationAccomodationDay</p>
+                            <p class="card-text"><strong style="color:#FF1654;">Konaklama:</strong>@item.DestinationAccomodationDay
+
+                </p>
                             <div class="mt-auto">
-                                <p class="mb-1"><strong style="color:#FF1654;">@item.DestinationPrice ₺'den   </strong>   Başlayan Fiyatlarla..</p>
-                                <p class="text-muted">@item.DestinationDescription</p>
+                                <p class="mb-1"><strong style="color:#FF1654;">Fiyat: </strong>@item.DestinationPrice ₺</p>
+                                <p class="text-muted"><strong style="color:#FF1654;">Max Misafir:</strong>@item.DestinationCapacity Kişilik</p>
                             </div>
                         </div>
                     </div>

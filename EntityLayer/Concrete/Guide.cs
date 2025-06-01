@@ -11,11 +11,12 @@ namespace EntityLayer.Concrete
     {
 		[Key]
 		public int GuideID { get; set; }
-		public string GuideName { get; set; }
-		public string GuideDescription { get; set; }
-		public string GuideImage { get; set; }
-		public string GuideTwitterUrl { get; set; }
-		public string GuideInstagramUrl { get; set; }
+		public string? GuideName { get; set; }
+		public string? GuideDescription { get; set; }
+		public string? GuideImage { get; set; }
+		public string? GuideTwitterUrl { get; set; }
+		public string? GuideInstagramUrl { get; set; }
 		public bool GuideStatus { get; set; }
+		public ICollection<Destination> Destinations { get; set; }
 	}
 }

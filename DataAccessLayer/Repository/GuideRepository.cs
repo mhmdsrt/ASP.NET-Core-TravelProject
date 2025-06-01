@@ -39,5 +39,7 @@ namespace DataAccessLayer.Repository
 			return _context.Guides.Count();
 		}
 
+		
+
 	}
 }

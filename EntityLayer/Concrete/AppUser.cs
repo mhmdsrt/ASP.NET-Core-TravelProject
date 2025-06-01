@@ -20,5 +20,7 @@ namespace EntityLayer.Concrete
 		public string SurName { get; set; }
 		public string? Gender { get; set; }
 		public ICollection<Reservation> Reservations { get; set; }
+
+		public ICollection<Comment> Comments { get; set; }
 	}
 }

@@ -11,5 +11,6 @@ namespace DataAccessLayer.Abstract
 	{
 		IEnumerable<Comment> GetAllCommentByDestinationId(int id);
 		IEnumerable<Comment> GetAllCommentIncludeDestination(); // Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
+		 int GetCommentCountByDestinationId(int id);
 	}
 }
