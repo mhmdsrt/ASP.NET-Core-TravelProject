@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.AppRoleDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
 using DTOLayer.DTOs.ContactUsDTOs;
 using EntityLayer.Concrete;
@@ -74,6 +75,8 @@ namespace TravelProject.Mapping.AutoMapperProfile
 			CreateMap<GetDestinationByIdQueryResult, Destination>().ReverseMap();
 			CreateMap<UpdateDestinationCommand, Destination>().ReverseMap();
 			CreateMap<ContactUsAddDTO, ContactUs>().ReverseMap();
+			CreateMap<AppRoleCreateDTO, AppRole>().ReverseMap();
+			CreateMap<AppRoleUpdateDTO, AppRole>().ReverseMap();
 		}
 	}
 }

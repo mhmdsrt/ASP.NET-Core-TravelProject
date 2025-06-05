@@ -6,7 +6,7 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>ID</th>
+        <th style="width:210px;">Görsel</th>
         <th>Şehir</th>
         <th>Fiyat</th>
         <th>Kapasite</th>
@@ -15,14 +15,19 @@
         <th>Güncelle</th>
     </tr>
 
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td>@item.DestinationID</td>
+            <td style="text-align: center; vertical-align: middle;">
+                <img src="@item.DestinationImage" style="height:150px;width:200px;" />
+            </td>
             <td>@item.DestinationCity</td>
             <td>@item.DestinationPrice</td>
             <td>@item.DestinationCapacity</td>
-            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a></td>
+            <td>
+                <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a>
+
+            </td>
             <td><a href="/Admin/Destination/DeleteDestination/@item.DestinationID" class="btn btn-outline-danger">Sil</a></td>
             <td><a href="/Admin/Destination/UpdateDestination/@item.DestinationID" class="btn btn-outline-success">Güncelle</a></td>
         </tr>

@@ -1,0 +1,17 @@
+﻿@using DTOLayer.DTOs.AppRoleDTOs
+@model AppRoleCreateDTO
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rol Oluşturma</h1>
+
+<form asp-area="Admin" asp-controller="Role" asp-action="CreateRole" method="post">
+    <div>
+        @Html.Label("Rol Adı")
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <br /><button class="btn btn-outline-success">Oluştur</button>
+</form>
+

@@ -9,8 +9,8 @@ namespace DataAccessLayer.Abstract
 {
 	public interface ICommentRepository : IGenericRepository<Comment>
 	{
-		IEnumerable<Comment> GetAllCommentByDestinationId(int id);
-		IEnumerable<Comment> GetAllCommentIncludeDestination(); // Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
+		IQueryable<Comment> GetAllCommentByDestinationId(int id);
+		IQueryable<Comment> GetAllCommentIncludeDestination(); // Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 		 int GetCommentCountByDestinationId(int id);
 	}
 }

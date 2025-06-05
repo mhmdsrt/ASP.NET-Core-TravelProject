@@ -24,12 +24,20 @@ namespace DataAccessLayer.Repository
 		{
 			_context = context;
 		}
+		/*
+ Sadece okuma gerekiyorsa → IEnumerable<T>
 
-		public IEnumerable<Comment> GetAllCommentByDestinationId(int id) // AppUser'ı dahil ederek Dest ID'ye göre tüm yorumları getirç
+Değiştirme gerekiyorsa → ICollection<T> veya List<T>
+
+Veritabanına sorgu atılacaksa → IQueryable<T> -> LINQ sorguları SQL sorgularına çevrilerek sorgular SQL 'de calıştırır performans artar
+
+ */
+
+		public IQueryable<Comment> GetAllCommentByDestinationId(int id) // AppUser'ı dahil ederek Dest ID'ye göre tüm yorumları getirç
 		{
-			return _context.Comments.Where(i => i.DestinationID == id).Include(a=>a.AppUser);
+			return _context.Comments.Where(i => i.DestinationID == id).Include(a => a.AppUser);
 		}
-		public IEnumerable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
+		public IQueryable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 		{
 			return _context.Comments.Include(d => d.Destination);
 		}
@@ -61,3 +69,33 @@ namespace DataAccessLayer.Repository
 
 	*/
 }
+/*
+ 2. IEnumerable<T>
+Sadece veri üzerinde dolaşmaya izin verir.
+
+Okuma (Read-Only) amaçlıdır.
+
+foreach, First(), Where() gibi LINQ komutlarıyla çalışır.
+
+Lazy/deferred execution sağlar: Yani sorgu, çağrılana kadar çalışmaz.
+
+🔸 Ne zaman kullanılır?
+
+Filtreleme ya da döngü için sadece okumak gerekiyorsa.
+
+Hafif veri erişimi gerekiyorsa.
+
+
+ 3. IQueryable<T>
+IEnumerable<T>’in gelişmiş halidir.
+
+IQueryable<T> ile yazılan LINQ sorguları veritabanına SQL sorgusu olarak çevrilir.
+
+Böylece filtreleme/sıralama gibi işlemler veritabanında çalışır -> çok daha performanslı olur.
+
+🔸 Ne zaman kullanılır?
+
+Entity Framework ile veritabanı sorgularında.
+
+Daha az veri çekmek istiyorsan.
+ */
