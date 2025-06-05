@@ -1,10 +1,22 @@
 ## Proje Şuan Yapım Aşamasındadır..
 ### 📌 Kullanılan Teknolojiler
-#### 🎯 N-Tier Architecture
-#### 🎯 MVC (Presentation Layer) 
-#### 🎯 Generic Repository Design Pattern
-#### 🎯 Identity Framework
-#### 🎯 View Components & Partial View
+#### 💎 N-Tier Architecture
+#### 💎 AutoMapper
+#### 💎 DTO
+#### 💎 CQRS & Mediator Design Pattern
+#### 💎 MediatR
+#### 💎 Generic Repository Design Pattern
+#### 💎 Identity 
+#### 💎 Fluent Validation 
+#### 💎 Rapid API
+#### 💎 Dependency Injection 
+#### 💎 Entity Framework Core
+#### 💎 SQL
+#### 💎 LINQ
+#### 💎 MSSQL
+#### 💎 MVC
+#### 💎 View Components & Partial View
+#### 💎 MailKit (SMTP Email Sending)
 
 #### Yapım Aşamasında Olan Projemde Bazı Kesitler
 ![Ekran Görüntüsü (627)](https://github.com/user-attachments/assets/cb8b4677-0fba-4c26-9243-5448d782e436)
