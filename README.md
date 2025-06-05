@@ -3,9 +3,9 @@
 #### 💎 N-Tier Architecture
 #### 💎 AutoMapper
 #### 💎 DTO
+#### 💎 Generic Repository Design Pattern
 #### 💎 CQRS & Mediator Design Pattern
 #### 💎 MediatR
-#### 💎 Generic Repository Design Pattern
 #### 💎 Identity 
 #### 💎 Fluent Validation 
 #### 💎 Rapid API
