@@ -1,5 +1,5 @@
 ## Proje Şuan Yapım Aşamasındadır..
-### 📌 Kullanılan Teknolojiler
+### 📌 ASP.NET Core ile Kullanılan Teknolojiler
 #### 💎 N-Tier Architecture
 #### 💎 AutoMapper
 #### 💎 DTO
