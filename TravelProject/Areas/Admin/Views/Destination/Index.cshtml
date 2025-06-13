@@ -10,6 +10,7 @@
         <th>Şehir</th>
         <th>Fiyat</th>
         <th>Kapasite</th>
+        <th>Konaklama Süresi</th>
         <th>Sitede Gör</th>
         <th>Sil</th>
         <th>Güncelle</th>
@@ -22,8 +23,9 @@
                 <img src="@item.DestinationImage" style="height:150px;width:200px;" />
             </td>
             <td>@item.DestinationCity</td>
-            <td>@item.DestinationPrice</td>
+            <td>@item.DestinationPrice ₺</td>
             <td>@item.DestinationCapacity</td>
+            <td>@item.DestinationAccomodationDay</td>
             <td>
                 <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Sitede Gör</a>
 

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Comment>
 
-<div class="comments mt-5">
+<div class="comments mt-5" >
     <h4 class="side-title ">Yorumlar(@ViewBag.CommentCount)</h4>
     @foreach (var item in Model)
     {
@@ -17,9 +17,7 @@
 
                     </li>
                     <li class="reply-last">
-                        <a href="#reply" class="reply">
-                            Yanıtla
-                        </a>
+                      
                     </li>
                 </ul>
                 <p>

@@ -8,23 +8,28 @@
 
 <table class="table table-bordered">
     <tr>    
-
+        <th>Görsel</th>
         <th>Yorumu Yapan</th>
-        <th>Tur</th>
+        <th>Yorumun Yapıldığı Tur</th>
         <th> Yorum Tarih</th>
         <th>Yorum İçeriği</th>
         <th>Durum</th>
+        <th>Yoruma Git</th>
         <th>Sil</th>
     </tr>
 
     @foreach(var item in Model)
     {
         <tr>
-            <td>@item.CommentUser</td>
+            <td>
+                <img src="@item.AppUser.ImageUrl" style="height:100px; width:100px; object-fit:cover; border-radius:50%;" />
+            </td>
+            <td>@item.AppUser.Name @item.AppUser.SurName</td>
             <td>@item.Destination.DestinationCity</td>
-            <td>@item.CommentDate.ToShortDateString()</td>
+            <td>@item.CommentDate.ToLongDateString() @item.CommentDate.ToShortTimeString()</td>
             <td>@item.CommentContent</td>
             <td>@item.CommentStatus</td>
+            <td><a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-outline-info">Detay</a></td>
             <td><a href="/Admin/Comment/DeleteComment/@item.CommentID" class="btn btn-outline-danger">Sil</a></td>
         </tr>
     }

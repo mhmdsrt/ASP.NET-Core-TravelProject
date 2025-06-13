@@ -10,6 +10,7 @@ namespace DataAccessLayer.Abstract
 {
 	public interface IAppRoleRepository : IGenericRepository<AppRole>
 	{
+		Task<IEnumerable<AppRole>> GetAllRole();
 		Task<AppRole?> GetRoleById(int id);
 		Task DeleteRole(AppRole appRole);
 		Task UpdateRole(AppRole appRole);

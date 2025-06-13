@@ -1,0 +1,55 @@
+﻿@using TravelProject.Areas.Admin.Models
+@model IEnumerable<BookingHotelSeachViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+
+
+<form asp-area="Member" asp-controller="BookingHotelSearch" asp-action="GetIdByCity" method="post" class="mb-4">
+    <div class="text-center mb-3">
+        <h2 class="fw-bold">🛏️ Booking Otel Rezervasyon</h2>
+        <p class="text-muted">Şehir ismi girerek otel araması yapabilirsiniz. Örn: <i>Paris</i></p>
+    </div>
+    <div class="input-group w-50 mx-auto">
+        <input type="text" name="cityName" class="form-control form-control-lg" placeholder="Şehir Giriniz 'Paris'" />
+        <button type="submit" class="btn btn-info btn-lg text-white">Otel Ara</button>
+    </div>
+</form>
+
+<table class="table table-hover align-middle shadow-sm rounded bg-white">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">Görsel</th>
+            <th scope="col">Otel Adı</th>
+            <th scope="col">Puanı (/10)</th>
+            <th scope="col">Değerlendirme</th>
+            <th scope="col">Uzaklık</th>
+            <th scope="col">Konaklama Tipi</th>
+            <th scope="col">Tasarım</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@item.url">
+                        <img src="@item.max_1440_photo_url" style="height:150px;width:150px;object-fit:cover;" />
+                    </a>
+                </td>
+                <td><strong>@item.hotel_name</strong></td>
+                <td><span class="badge bg-success fs-6">@item.review_score</span></td>
+                <td>@item.review_score_word</td>
+                <td>@item.distances.FirstOrDefault()?.text</td>
+                <td>@item.accommodation_type_name</td>
+                <td>@Html.Raw(item.unit_configuration_label)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

@@ -19,6 +19,10 @@ namespace BusinessLayer.Concrete
 			_appRoleRepository = appRoleRepository;
 		}
 
+		public async Task<IEnumerable<AppRole>> GetAllRole()
+		{
+			return await _appRoleRepository.GetAllRole();
+		}
 		public async Task<AppRole?> GetRoleById(int id)
 		{
 			var role = await _appRoleRepository.GetRoleById(id);

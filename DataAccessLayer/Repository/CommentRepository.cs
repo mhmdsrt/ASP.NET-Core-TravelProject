@@ -39,7 +39,7 @@ Veritabanına sorgu atılacaksa → IQueryable<T> -> LINQ sorguları SQL sorgula
 		}
 		public IQueryable<Comment> GetAllCommentIncludeDestination()// Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 		{
-			return _context.Comments.Include(d => d.Destination);
+			return _context.Comments.Include(d => d.Destination).Include(a=>a.AppUser);
 		}
 
 

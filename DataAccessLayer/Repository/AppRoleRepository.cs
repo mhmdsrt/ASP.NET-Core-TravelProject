@@ -22,7 +22,10 @@ namespace DataAccessLayer.Repository
 			_context = context;
 			_roleManager = roleManager;
 		}
-
+		public async Task<IEnumerable<AppRole>> GetAllRole()
+		{
+			return await _roleManager.Roles.ToListAsync();
+		}
 		public async Task<AppRole?> GetRoleById(int id)// id değerini ait role'u bul sonra sil, null olup olmadıgı kontrolünü business'da yaparız :)
 		{
 			return await _roleManager.Roles.FirstOrDefaultAsync(i => i.Id == id);

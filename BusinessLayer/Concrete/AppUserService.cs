@@ -18,10 +18,18 @@ namespace BusinessLayer.Concrete
 			_appUserRepository = appUserRepository;
 		}
 
+		public async Task<IEnumerable<AppUser>> GetAllUsersByRoleInMember()
+		{
+			return await _appUserRepository.GetAllUsersByRoleInMember();
+		}
+
 		public int GetCountUser() // Kullanıcı Sayısını Getir
 		{
 			return _appUserRepository.GetCountUser();
 		}
-
+		public async Task<AppUser?> GetUserById(int id)
+		{
+			return await _appUserRepository.GetUserById(id);
+		}
 	}
 }

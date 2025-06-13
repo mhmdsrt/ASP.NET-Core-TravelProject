@@ -242,10 +242,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("CommentStatus")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CommentUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DestinationID")
                         .HasColumnType("int");
 

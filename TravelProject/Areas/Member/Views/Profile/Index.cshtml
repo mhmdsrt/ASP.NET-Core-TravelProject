@@ -1,13 +1,80 @@
 ﻿@model UserProfileEditViewModel
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+	Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
 <h1>Profil Düzenle</h1>
 
-<form method="post" enctype="multipart/form-data">
- @*enctype="multipart/form-data" ifadesini dosya yükleme için şarttır*@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Profil Bilgilerimi Güncelle</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="card-content collapse show">
+				<div class="card-body">
+
+                    <form method="post" enctype="multipart/form-data">
+                        @*enctype="multipart/form-data" ifadesini dosya yükleme için şarttır*@
+                        <div>
+                            @Html.Label("Ad")
+                            <input type="text" class="form-control" asp-for="Name">
+                        </div><br />
+
+                        <div>
+                            @Html.Label("SoyAd")
+                            <input type="text" class="form-control" asp-for="SurName">
+                        </div><br />
+
+                        <div>
+                            @Html.Label("Telefon")
+                            <input type="text" class="form-control" asp-for="PhoneNumber">
+                        </div><br />
+
+                        <div>
+                            @Html.Label("Mail")
+                            <input type="text" class="form-control" asp-for="Mail">
+                        </div><br />
+
+                        <div>
+                            @Html.Label("Şifre")
+                            <input type="text" class="form-control" asp-for="Password">
+                        </div><br />
+
+                        <div>
+                            @Html.Label("Şifre Onayla")
+                            <input type="text" class="form-control" asp-for="ConfirmPassword">
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Resim Seç")
+                            <input type="file" class="form-control" asp-for="ImageFile">
+                        </div>
+                        <div>
+                            <button class="btn btn-info">Bigilerimi Güncelle</button>
+                        </div>
+                    </form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+@*enctype="multipart/form-data" ifadesini dosya yükleme için şarttır*@
+
+@* <form method="post" enctype="multipart/form-data">
     <div>
         @Html.Label("Ad")
         <input type="text" class="form-control" asp-for="Name">
@@ -45,3 +112,4 @@
         <button class="btn btn-info">Bigilerimi Güncelle</button>
     </div>
 </form>
+ *@

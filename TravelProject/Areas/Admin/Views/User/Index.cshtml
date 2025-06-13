@@ -8,25 +8,31 @@
 
 <table class="table table-bordered">
     <tr>
+        <th>Görsel</th>
         <th>Ad Soyad</th>
         <th>Kullanıcı Adı</th>
         <th>Mail</th>
         <th>Telefon</th>
         <th>Yaptığı Yorumlar</th>
         <th>Yaptığı Rezervasyonlar</th>
+        <th>Rol Ata</th>
         <th>Sil</th>
-   </tr>
+    </tr>
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                <img src="@item.ImageUrl" style="height:100px; width:100px; object-fit:cover; border-radius:50%;" />
+            </td>
             <td>@item.Name @item.SurName</td>
             <td>@item.UserName</td>
             <td>@item.Email</td>
             <td>@item.PhoneNumber</td>
             <td><a href="#" class="btn btn-primary">Yaptığı Yorumlar</a></td>
             <td><a href="/Admin/User/GetUserReservationByOld/@item.Id" class="btn btn-warning">Yaptığı Rezervasyonlar</a></td>
+            <td><a href="/Admin/Role/AssignRole/@item.Id" class="btn btn-info">Rol Ata</a></td>
             <td><a href="#" class="btn btn-danger">Sil</a></td>
- 
+
         </tr>
     }
 </table>

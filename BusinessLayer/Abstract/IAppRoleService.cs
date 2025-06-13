@@ -10,6 +10,7 @@ namespace BusinessLayer.Abstract
 {
 	public interface IAppRoleService : IGenericService<AppRole>
 	{
+		Task<IEnumerable<AppRole>> GetAllRole();
 		Task RemoveAppRole(int id);
 		Task UpdateRole(AppRole appRole);
 		Task<AppRole?> GetRoleById(int id);

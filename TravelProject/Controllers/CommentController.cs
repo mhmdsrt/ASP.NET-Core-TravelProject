@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TravelProject.Controllers
@@ -7,9 +8,11 @@ namespace TravelProject.Controllers
 	public class CommentController : Controller
 	{
 		private readonly ICommentService _commentService;
-		public CommentController(ICommentService commentService)
+		private readonly UserManager<AppUser> _userManager;
+		public CommentController(ICommentService commentService, UserManager<AppUser> userManager)
 		{
 			_commentService = commentService;
+			_userManager = userManager;
 		}
 
 		[HttpGet]
@@ -19,13 +22,25 @@ namespace TravelProject.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult AddComment(Comment comment)
+		public async Task<IActionResult> AddComment([FromBody] Comment comment)
 		{
-			comment.CommentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+			comment.CommentDate = Convert.ToDateTime(DateTime.Now);
 			comment.CommentStatus = true;
-			comment.DestinationID = 8;
+			var userName = await _userManager.FindByNameAsync(User.Identity.Name);
+			comment.AppUserId = userName.Id;
+	
 			_commentService.Insert(comment);
-			return RedirectToAction("Index", "Destination");
+			return Json(new
+			{
+				comment.CommentContent,
+				comment.CommentDate,
+				AppUser = new
+				{
+					Name = userName.Name,
+					SurName = userName.SurName,  // dikkat: büyük S
+					ImageUrl = userName.ImageUrl
+				}
+			});
 		}
 	}
 }

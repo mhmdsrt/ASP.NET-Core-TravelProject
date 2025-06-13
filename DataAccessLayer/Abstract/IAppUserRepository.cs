@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-	public interface IAppUserRepository:IGenericRepository<AppUser>
+	public interface IAppUserRepository : IGenericRepository<AppUser>
 	{
-		 int GetCountUser(); // Kullanıcı Sayısını Getir
+		Task<IEnumerable<AppUser>> GetAllUsersByRoleInMember();
+		int GetCountUser(); // Kullanıcı Sayısını Getir
+		Task<AppUser?> GetUserById(int id);
 	}
 }

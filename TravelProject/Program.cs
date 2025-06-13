@@ -8,6 +8,8 @@ using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -29,8 +31,8 @@ var builder = WebApplication.CreateBuilder(args);
 kullanmasýný söyler
  */
 builder.Services.AddIdentity<AppUser, AppRole>()
-	.AddEntityFrameworkStores<Context>()
-	.AddErrorDescriber<CustomIdentityValidator>();
+.AddEntityFrameworkStores<Context>()
+	.AddErrorDescriber<CustomIdentityValidator>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
 
 
 // DI sistemine kaydediyoruz. DestinationCQRSController tarafýndan Constructor içerisinde bekkliyor
@@ -130,6 +132,7 @@ builder.Services.AddScoped<IAppUserService, AppUserService>();
 builder.Services.AddScoped<IContactUsService, ContactUsService>();
 builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 builder.Services.AddScoped<IAppRoleService, AppRoleService>();
+builder.Services.AddScoped<IAppUserService, AppUserService>();
 
 
 
@@ -149,6 +152,7 @@ builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
 builder.Services.AddScoped<IAppRoleRepository, AppRoleRepository>();
+builder.Services.AddScoped<IAppUserRepository, AppUserRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

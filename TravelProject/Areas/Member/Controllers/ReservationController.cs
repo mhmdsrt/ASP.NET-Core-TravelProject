@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TravelProject.Areas.Member.Controllers
 {
+	[AllowAnonymous]
 	[Area("Member")]
 	[Route("Member/[Controller]/[Action]/{id?}")]
 	public class ReservationController : Controller
@@ -84,6 +85,11 @@ namespace TravelProject.Areas.Member.Controllers
 														  }).ToList();
 
 			return DestinationSelectList;
+		}
+
+		public IActionResult Deneme()
+		{
+			return View();
 		}
 	}
 }

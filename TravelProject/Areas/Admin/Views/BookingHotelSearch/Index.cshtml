@@ -7,11 +7,17 @@
 
 
 
-<form asp-area="Admin" asp-controller="BookingHotelSearch" asp-action="GetIdByCity" method="post">
-    <h1>Booking Otel Rezervasyon</h1>
-    <input type="text" name="cityName" placeholder="Şehir Giriniz 'Paris'" />
-    <button class="btn btn-outline-info">Otel Ara</button><br /><br />
+<form asp-area="Admin" asp-controller="BookingHotelSearch" asp-action="GetIdByCity" method="post" class="mb-4">
+    <div class="text-center mb-3">
+        <h2 class="fw-bold">🛏️ Booking Otel Rezervasyon</h2>
+        <p class="text-muted">Şehir ismi girerek otel araması yapabilirsiniz. Örn: <i>Paris</i></p>
+    </div>
+    <div class="input-group w-50 mx-auto">
+        <input type="text" name="cityName" class="form-control form-control-lg" placeholder="Şehir Giriniz 'Paris'" />
+        <button type="submit" class="btn btn-info btn-lg text-white">Otel Ara</button>
+    </div>
 </form>
+
 <table class="table table-striped">
     <tr>
         <th>Görsel</th>
@@ -26,7 +32,9 @@
     {
         <tr>
             <td>
-                <img src="@item.max_1440_photo_url" style="height:120px;width:120px;object-fit:cover;" />
+                <a href="@item.url">
+                    <img src="@item.max_1440_photo_url" style="height:150px;width:150px;object-fit:cover;" />
+                </a>
             </td>
             <td>@item.hotel_name</td>
             <td>@item.review_score</td>
