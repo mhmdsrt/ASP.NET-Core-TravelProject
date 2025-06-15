@@ -8,7 +8,9 @@
 <table class="table table-bordered">
     <tr>
         <th>Gönderen</th>
+        <th>Gönderen Mail</th>
         <th>Konu</th>
+        <th>İçerik</th>
         <th>Tarih</th>
         <th>Sil</th>
         <th>Mesajı Aç</th>
@@ -17,10 +19,14 @@
     {
         <tr>
             <td>@item.ContactUsName</td>
+            <td>@item.ContactUsMail</td>
             <td>@item.ContactUsSubject</td>
+            <td>@item.ContactUsMessageBody</td>
             <td>@item.ContactUsMessageDate</td>
             <td><a href="#" class="btn btn-outline-danger">Sil</a></td>
-            <td><a href="#" class="btn btn-outline-secondary">Mesajı Aç</a></td>
+            <td>
+                <a class="btn btn-outline-success" href="/Admin/Mail/SendMailToContactUs/@item.ContactUsId">Mail Gönder</a>
+            </td>
         </tr>
     }
 </table>

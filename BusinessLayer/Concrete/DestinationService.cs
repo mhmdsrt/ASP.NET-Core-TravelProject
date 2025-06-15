@@ -22,6 +22,10 @@ namespace BusinessLayer.Concrete
 		{
 			return _destinationRepository.GetCountDestination();
 		}
+		public IQueryable<Destination> GetAllDestinationBySearchComboBox(string destinationCityName)
+		{
+			return _destinationRepository.GetAllDestinationBySearchComboBox(destinationCityName);
+		}
 
 	}
 }

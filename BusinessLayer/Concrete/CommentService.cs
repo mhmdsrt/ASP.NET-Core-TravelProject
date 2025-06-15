@@ -31,5 +31,12 @@ namespace BusinessLayer.Concrete
 			return _commentRepository.GetCommentCountByDestinationId(id);
 		}
 
+		public IQueryable<Comment> GetAllCommentByUserId(int id)// User id ye göre kullanıcının yaptıgı tüm yorumları getir
+		{
+			return _commentRepository.GetAllCommentByUserId(id);
+
+		}
+
+
 	}
 }

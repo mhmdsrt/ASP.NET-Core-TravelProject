@@ -27,7 +27,7 @@ ThenInclude() metodu iç içe ilişkili varlıkları yüklemek için kullanılı
 		{
 			// İlişkili Destination ve AppUser Sütunlarını(Propertylerini) dahil ederek
 			// Giriş yapan kullanıcı id sine göre onay bekleyen rezervasyonları getir 
-			return _context.Reservations.Include(d=>d.Destination).Include(a=>a.AppUser).Where(a => a.AppUserID == id && a.ReservationStatus == "Onay Bekliyor");
+			return _context.Reservations.Include(d => d.Destination).Include(a => a.AppUser).Where(a => a.AppUserID == id && a.ReservationStatus == "Onay Bekliyor");
 		}
 
 		public IQueryable<Reservation> GetAllReservationByGivenApproval(int id)
@@ -48,6 +48,27 @@ ThenInclude() metodu iç içe ilişkili varlıkları yüklemek için kullanılı
 		{
 			return _context.Reservations.Count();
 		}
+
+		public IQueryable<Reservation> GetAllWaitOrGiveApprovalGiveReservation() // onay bekleyen veya onay verilen tüm rezervasyonları getir
+		{
+			return _context.Reservations.Where(r => r.ReservationStatus == "Onay Bekliyor" || r.ReservationStatus == "Onay Verildi").Include(a => a.AppUser).Include(a => a.Destination);
+		}
+
+		public void GiveApprovalChange(int id) // rezervasyonu onay verildi olarak değiştir
+		{
+			var reservation = GetById(id);
+			reservation.ReservationStatus = "Onay Verildi";
+			_context.Update(reservation);
+			_context.SaveChanges();
+		}
+		public void WaitApprovalChange(int id) // rezervasyonu onay bekliyor olarak değiştir
+		{
+			var reservation = GetById(id);
+			reservation.ReservationStatus = "Onay Bekliyor";
+			_context.Update(reservation);
+			_context.SaveChanges();
+		}
+
 	}
 
 }

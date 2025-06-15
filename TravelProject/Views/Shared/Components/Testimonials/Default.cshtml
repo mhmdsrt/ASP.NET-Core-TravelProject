@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model IEnumerable<Testimonial>
+@model IEnumerable<Comment>
 
 <section class="w3l-clients" id="clients">
     <!-- /grids -->
@@ -20,14 +20,14 @@
                                 <div class="testimonial">
                                     <blockquote>
                                         <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        @item.TestimonialComment
+                                        @item.CommentContent
                                     </blockquote>
                                     <div class="testi-des">
                                         <div class="test-img">
-                                            <img src="@item.TestimonialImage" class="img-fluid" alt="client-img">
+                                            <img src="@item.AppUser.ImageUrl" class="img-fluid" alt="client-img">
                                         </div>
                                         <div class="peopl align-self">
-                                            <h3>@item.TestimonialClient</h3>
+                                            <h3>@item.AppUser.Name @item.AppUser.SurName</h3>
                                             <p class="indentity">Example City</p>
                                         </div>
                                     </div>

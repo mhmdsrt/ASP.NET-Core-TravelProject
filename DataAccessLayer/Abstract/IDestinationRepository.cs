@@ -10,5 +10,7 @@ namespace DataAccessLayer.Abstract
 	public interface IDestinationRepository : IGenericRepository<Destination>
 	{
 		int GetCountDestination(); // Tur sayısını getir
+		IQueryable<Destination> GetAllDestinationBySearchComboBox(string destinationCityName); // şehir ismine göre rotaları getir
+
 	}
 }

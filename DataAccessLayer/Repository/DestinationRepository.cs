@@ -22,5 +22,10 @@ namespace DataAccessLayer.Repository
 			return _context.Destinations.Count();
 		}
 
+		public IQueryable<Destination> GetAllDestinationBySearchComboBox(string destinationCityName) // şehir ismine göre rotaları getir
+		{
+
+			return _context.Destinations.Where(c => c.DestinationCity == destinationCityName);
+		}
 	}
 }

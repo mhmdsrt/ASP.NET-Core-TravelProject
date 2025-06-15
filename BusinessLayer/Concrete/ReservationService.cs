@@ -39,5 +39,19 @@ namespace BusinessLayer.Concrete
 		{
 			return _reservationRepository.GetReservationCount();
 		}
+
+		public IQueryable<Reservation> GetAllWaitOrGiveApprovalGiveReservation() // onay bekleyen tüm rezervasyonları getir
+		{
+			return _reservationRepository.GetAllWaitOrGiveApprovalGiveReservation();
+		}
+
+		public void GiveApprovalChange(int id) // rezervasyonu onay verildi olarak değiştir
+		{
+			_reservationRepository.GiveApprovalChange(id);
+		}
+		public void WaitApprovalChange(int id)// rezervasyonu onay bekliyor olarak değiştir
+		{
+			_reservationRepository.WaitApprovalChange(id);
+		}
 	}
 }

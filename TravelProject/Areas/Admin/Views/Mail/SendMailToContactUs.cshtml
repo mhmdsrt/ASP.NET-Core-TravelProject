@@ -1,0 +1,31 @@
+﻿@using TravelProject.Models
+@model MailRequest
+@{
+    ViewData["Title"] = "SendMailToContactUs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Mail Gönderme</h1>
+<form asp-area="Admin" asp-controller="Mail" asp-action="SendMailToContactUs" method="post">
+    <div>
+        @Html.Label("Gönderilecek Kişinin Maili")
+        <input type="text" asp-for="ReceiverMail" class="form-control" value="@ViewBag.userMail" readonly />
+    </div><br />
+    <div>
+        @Html.Label("Konu")
+        <input type="text" asp-for="Subject" class="form-control" />
+    </div><br />
+    <div>
+        @Html.Label("Mailin İçeriği")
+        <textarea cols="30" rows="5" asp-for="Body" class="form-control"></textarea>
+    </div><br />
+    <button class="btn btn-outline-primary">Gönder</button>
+</form>
+<br />
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning">@ViewBag.Message</div>
+}
+
+

@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
 		IQueryable<Comment> GetAllCommentByDestinationId(int id);
 		IQueryable<Comment> GetAllCommentIncludeDestination(); // Tüm Yorumları ilişkili olduğu Destination nesnesi ile beraber getir
 		 int GetCommentCountByDestinationId(int id);
+		 IQueryable<Comment> GetAllCommentByUserId(int id); // User id ye göre kullanıcının yaptıgı tüm yorumları getir
+
 	}
 }

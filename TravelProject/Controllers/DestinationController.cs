@@ -22,5 +22,11 @@ namespace TravelProject.Controllers
 		{
 			return View(_destinationService.GetById(id));
 		}
+
+		[HttpPost]
+		public IActionResult GetAllDestinationBySearchComboBox(string destinationCityName)
+		{
+			return View(_destinationService.GetAllDestinationBySearchComboBox(destinationCityName));
+		}
 	}
 }

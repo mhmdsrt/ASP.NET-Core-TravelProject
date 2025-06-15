@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
 	public interface IDestinationService : IGenericService<Destination>
 	{
 		public int GetCountDestination(); // Tur sayısını getir
+		IQueryable<Destination> GetAllDestinationBySearchComboBox(string destinationCityName); // şehir ismine göre rotaları getir
+
 	}
 }

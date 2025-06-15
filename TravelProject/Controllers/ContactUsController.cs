@@ -34,7 +34,7 @@ namespace TravelProject.Controllers
 			contactUsAddDTO.ContactUsMessageDate = Convert.ToDateTime(DateTime.Now);
 			contactUsAddDTO.ContactUsStatus = true;
 			_contactUsService.Insert(_mapper.Map<ContactUs>(contactUsAddDTO));
-			return View();
+			return RedirectToAction("Index","Home");
 		}
 
 	}

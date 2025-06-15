@@ -68,7 +68,7 @@ namespace TravelProject.Areas.Member.Controllers
 			}
 
 			var userName = await _userManager.FindByNameAsync(User.Identity.Name); // AspNetUsers tablosundaki UserName sütununa karşılık gelir
-
+			reservation.ReservationDate = Convert.ToDateTime(reservation.ReservationDate);
 			reservation.AppUserID = userName.Id;
 			reservation.ReservationStatus = "Onay Bekliyor"; // Kullanıcı rezervasyon yaptıktan sonra Adminin onay vermesini beklicek, kontenjanı dolmus veya tur iptal edilmiş olabilir
 			_reservationService.Insert(reservation);

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Reservation>
+
+@{
+    ViewData["Title"] = "GetAllWaitOrGiveApprovalGiveReservation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Rezervasyonlar</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Görsel</th>
+        <th>Ad Soyad</th>
+        <th>Rezervasyon Turu</th>
+        <th>Rezervasyon Ücreti</th>
+        <th>Rezervasyon Tarihi</th>
+        <th>Rezervasyon Açıklaması</th>
+        <th>Misfir Sayısı</th>
+        <th>Mail</th>
+        <th>Durum</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    <img src="@item.AppUser.ImageUrl" style="height:100px; width:100px; object-fit:cover; border-radius:50%;" />
+                </td>
+                <td>@item.AppUser.Name @item.AppUser.SurName</td>
+                <td>@item.Destination.DestinationCity</td>
+                <td>@item.Destination.DestinationPrice ₺</td>
+                <td>@item.ReservationDate</td>
+                <td>@item.ReservationDescription</td>
+                <td>@item.ReservationVisitorCount</td>
+                <td>@item.AppUser.Email</td>
+            @if (item.ReservationStatus == "Onay Bekliyor")
+            {
+                        <td><a href="/Admin/User/GiveApprovalChange/@item.ReservationID" class="btn btn-outline-success">Onay Ver</a></td>
+            }
+            else if (item.ReservationStatus == "Onay Verildi")
+            {
+                        <td><a href="/Admin/User/WaitApprovalChange/@item.ReservationID" class="btn btn-outline-info">Askıya Al</a></td>
+
+            }
+
+
+            </tr>
+    }
+</table>
+
+
+

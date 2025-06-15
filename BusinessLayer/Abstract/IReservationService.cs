@@ -13,5 +13,8 @@ namespace BusinessLayer.Abstract
 		IEnumerable<Reservation> GetAllReservationByGivenApproval(int id); // Giriş yapan kullanıcı id sine göre onay verilen rezervasyonları getir, given -> verildi
 		IEnumerable<Reservation> GetAllReservationByOld(int id); // Giriş yapan kullanıcı id sine göre eski rezervasyonları getir
 		int GetReservationCount(); // Toplam rezervasyon sayısını getir
+		IQueryable<Reservation> GetAllWaitOrGiveApprovalGiveReservation(); // onay bekleyen tüm rezervasyonları getir
+		void GiveApprovalChange(int id); // rezervasyonu onay verildi olarak değiştir
+		void WaitApprovalChange(int id); // rezervasyonu onay bekliyor olarak değiştir
 	}
 }

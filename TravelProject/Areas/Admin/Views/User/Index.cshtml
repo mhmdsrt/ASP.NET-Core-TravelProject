@@ -28,7 +28,7 @@
             <td>@item.UserName</td>
             <td>@item.Email</td>
             <td>@item.PhoneNumber</td>
-            <td><a href="#" class="btn btn-primary">Yaptığı Yorumlar</a></td>
+            <td><a href="/Admin/User/GetAllCOmmentByUserId/@item.Id" class="btn btn-primary">Yaptığı Yorumlar</a></td>
             <td><a href="/Admin/User/GetUserReservationByOld/@item.Id" class="btn btn-warning">Yaptığı Rezervasyonlar</a></td>
             <td><a href="/Admin/Role/AssignRole/@item.Id" class="btn btn-info">Rol Ata</a></td>
             <td><a href="#" class="btn btn-danger">Sil</a></td>

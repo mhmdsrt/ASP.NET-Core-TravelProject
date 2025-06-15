@@ -5,15 +5,17 @@ namespace TravelProject.ViewComponents.HomeIndex
 {
 	public class Testimonials : ViewComponent
 	{
-		private readonly ITestimonialService _testimonialService;
+		//private readonly ITestimonialService _testimonialService;
+		private readonly ICommentService _commentService;
 
-		public Testimonials(ITestimonialService testimonialService)
+		public Testimonials(ICommentService commentService)
 		{
-			_testimonialService = testimonialService;
+			_commentService = commentService;
 		}
+
 		public IViewComponentResult Invoke()
 		{
-			return View(_testimonialService.GetAll());
+			return View(_commentService.GetAllCommentIncludeDestination());
 		}
 	}
 }

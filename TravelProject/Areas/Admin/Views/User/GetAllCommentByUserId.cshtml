@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Comment>
+@{
+    ViewData["Title"] = "GetAllCommentByUserId";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kullanıcının Yaptığı Yorumlar</h1>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th style="width:110px;">Görsel</th>
+        <th>Kullanıcı</th>
+        <th>Mail Adresi</th>
+        <th>Yaptığı Yorum</th>
+        <th>Yorum Yapılan Tur</th>
+        <th>Yapılma Tarih</th>
+        <th>Durum</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@item.AppUser.ImageUrl" style="height:100px; width:100px; object-fit:cover; border-radius:50%;" />
+            </td>
+            <td>@item.AppUser.Name @item.AppUser.SurName</td>
+            <td>@item.AppUser.Email</td>
+            <td>@item.CommentContent</td>
+            <td>@item.Destination.DestinationCity</td>
+            <td>@item.CommentDate.ToLongDateString() @item.CommentDate.ToShortTimeString()</td>
+            <td>@item.CommentStatus</td>
+        </tr>
+    }
+</table>
+
